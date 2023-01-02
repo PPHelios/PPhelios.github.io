@@ -1,0 +1,9 @@
+@import "./variables";
+@import "./reset";
+@import "../components/Card/card";
+@import "../components/Card-list/card-list";
+@import "../components/Navigation/navigation";
+
+main {
+  margin-top: 16vh;
+}

@@ -1,0 +1,33 @@
+$color-white: #fff;
+$color-black: #000;
+$color-yellow: #ffcb1f;
+$color-light-yellow: #fef9d2;
+$color-barely-yellow: #fffdf5;
+$color-green: #45de8f;
+$color-blue: #47a3ff;
+$color-mid-blue: #90e1fe;
+$color-light-blue: #c7f0ff;
+$color-plum: #e19be9;
+$color-orange: #ff5b19;
+$color-pink: #ffd6ec;
+
+$font-main: "Source Sans Pro", sans-serif;
+$font-sec: "Gluten", cursive;
+
+$padding: 0.6rem 1rem;
+$border-radius: 20px;
+$container-width: 88%;
+$container-width-tablet: 90%;
+$container-width-phone: 94%;
+$nav-height: 10vh;
+$nav-height-tablet: 8vh;
+$nav-height-phone: 7vh;
+
+$transition: all 400ms ease;
+
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
