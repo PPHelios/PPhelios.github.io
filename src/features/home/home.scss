@@ -3,30 +3,45 @@
 nav {
   width: 100%;
   height: 12vh;
+  font-size: calc(0.5rem + 0.5vw);
   color: $color-white;
   position: sticky;
   top: 0;
   z-index: 10;
   @include flexCenter(row);
+  overflow: hidden;
   .nav-left,
   .nav-right {
     padding: $padding;
+
     background-color: $color-black;
     border-radius: $border-radius;
-    overflow: hidden;
+    h3,
+    span {
+      font-size: $var-sizeS;
+      overflow: hidden;
+      &:hover {
+        color: $color-orange;
+        transition: $transition;
+      }
+    }
   }
   .nav-main {
     font-family: $font-sec;
-    font-size: $var-size;
     padding: $padding;
     background-color: $color-black;
     border-radius: $border-radius;
-    @include flexCenter(row);
-    gap: 2rem;
+    @include flexCenter;
+    gap: 1rem;
   }
   & a {
+    font-size: inherit;
     padding: $padding;
     color: $color-white;
+    &:hover {
+      color: $color-orange;
+      transition: $transition;
+    }
   }
 }
 
@@ -38,12 +53,16 @@ main {
   width: 200%;
   min-width: max-content;
   background-color: $color-orange;
-  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
+  & *{
+    overflow: hidden;
+  }
   &:hover {
     animation-play-state: paused;
+    overflow: hidden;
   }
   .marquee--content {
     width: 50%;
@@ -56,10 +75,12 @@ main {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-direction: normal;
+    overflow-x: hidden;
     h4 {
-      font-size: $var-size;
+      font-size: $var-sizeS;
       letter-spacing: 1px;
       font-family: $font-sec;
+      overflow-x: hidden;
     }
   }
 }
@@ -72,14 +93,17 @@ main {
   }
 }
 .home--images {
+  width: 100%;
   height: 80vh;
   display: flex;
-  // flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
   img {
-    width: 30vw;
+    width: 32.8vw;
+    padding: 0 1rem;
+    max-height: 78vh;
+    object-fit: cover;
   }
 }
 .home--images-img1,
@@ -97,22 +121,26 @@ main {
     object-fit: contain;
   }
   button {
-    width: 16rem;
-    height: 4rem;
+    width: 14rem;
+    height: 3rem;
     font-size: 2rem;
     background-color: $color-orange;
     border: none;
     position: absolute;
     bottom: 10%;
-    left: calc(50% - 8rem);
-    animation: 2s home-btn infinite ease-in-out 2.5s;
+    left: calc(50% - 7rem);
+    animation: 2s home-btn infinite ease-in-out 3.5s;
     z-index: 10;
     opacity: 0;
+    &:hover {
+      background-color: $color-light-yellow;
+      transition: $transition;
+    }
   }
 }
 @keyframes home-img {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(0);
@@ -120,7 +148,7 @@ main {
 }
 @keyframes home-img2 {
   0% {
-    transform: translateY(100%);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
@@ -142,30 +170,34 @@ main {
 // slogansSection
 .slogansSection {
   height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
   .slogansSection--slogan {
-    height: 50vh;
-    padding: $padding;
+    height: 48vh;
+    padding: 1rem 0;
     background-color: $color-light-blue;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
+    overflow: hidden;
     .slogansSection--slogan-text {
-      font-size: calc(1rem + 4vw);
+      font-size: $var-sizeL;
       line-height: 1.5;
       text-align: center;
       flex-grow: 1;
-
+      overflow: hidden;
       span {
-        font-size: calc(2rem + 3vw);
+        font-size: $var-sizeL;
         font-family: $font-sec;
         letter-spacing: 5px;
         color: $color-pink;
       }
       .span2 {
-        font-size: calc(2.5rem + 5vw);
+        font-size: calc($var-sizeL + 5vw);
         line-height: 0.8;
         background-image: url("../../assets/images/coffee.jpg");
+        background-size: contain;
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
@@ -173,8 +205,8 @@ main {
     }
   }
   .slogansSection--slogan img {
-    width: 50%;
-    height: 90%;
+    width: 50vw;
+    max-height: 46vh;
     border-radius: $border-radius;
     object-fit: contain;
     object-position: center;
@@ -182,19 +214,10 @@ main {
   & div:nth-child(2) {
     background-color: $color-light-pink;
   }
-  // & div:nth-child(1) img {
-  //   transform: translateY(9vh);
-  // }
-  // & div:nth-child(2) img {
-  //   transform: translateY(-16vh);
-  // }
-  .xx {
-    @include flexCenter;
-  }
 }
 // artMeetsCoffee
 .artMeetsCoffee {
-  padding: 5rem 0;
+  margin: 3rem 0;
   .artMeetsCoffee--grid {
     display: flex;
     flex-wrap: wrap;
@@ -202,8 +225,7 @@ main {
     gap: 1rem;
     img {
       width: 30vw;
-      height: 40vw;
-      max-height: 48vh;
+      max-height: 46vh;
       object-fit: cover;
       border-radius: $border-radius;
     }
@@ -242,30 +264,6 @@ main {
       background-position: 0 50%;
       filter: brightness(90%);
     }
-    // grid-template-columns: 1fr 1fr;
-    // grid-template-rows: 20vh 40vh 40vh;
-    // // justify-content: center;
-    // align-items: stretch;
-    // justify-items: stretch;
-    // column-gap: 2rem;
-
-    // .artMeetsCoffee--grid-header {
-    //   grid-column: 1/3;
-    //   grid-row: 1;
-    //   align-self: center;
-    // }
-    // .artMeetsCoffee--grid-img1 {
-    //   grid-column: 1;
-    //   grid-row: 2;
-    // }
-    // .artMeetsCoffee--grid-img2 {
-    //   grid-column: 1;
-    //   grid-row: 3;
-    // }
-    // .artMeetsCoffee--grid-img3 {
-    //   grid-column: 2;
-    //   grid-row: 2/4;
-    // }
   }
 }
 .ourproducts {
@@ -288,39 +286,102 @@ main {
 
 // Responsive
 @media (max-width: 825px) {
+  nav {
+    font-size: $var-sizeS;
+    .nav-main {
+      gap: 0.1rem;
+    }
+  }
   main {
     height: max-content;
     .home--images {
       height: max-content;
-      display: flex;
-      // flex-direction: column;
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      align-items: center;
+      justify-content: center;
       img {
-        width: 40vw;
+        width: 50vw;
+      }
+      .home--images-img1 {
+        animation-name: home-img2;
       }
       .home--images-img2 {
         position: static;
+        animation-name: home-img;
         button {
-          font-size: 1.5rem;
+          width: 10rem;
+          height: 2.5rem;
+          font-size: 1.3rem;
           top: 40%;
-          left: calc(50% - 8rem);
+          left: calc(50% - 5rem);
         }
+      }
+      .home--images-img3 {
+        animation-name: home-img2;
       }
     }
   }
+  @keyframes home-img {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes home-img2 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  // Slogan
+  .slogansSection {
+    height: min-content;
+    .slogansSection--slogan {
+      height: max-content;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .slogansSection--slogan-text {
+        flex-grow: 0;
+        span {
+          font-size: calc($var-sizeL + 4vw);
+        }
+        .span2 {
+          font-size: calc($var-sizeL + 11vw);
+          line-height: 2;
+        }
+      }
+    }
+    .slogansSection--slogan:nth-child(2) {
+      margin-top: 1rem;
+    }
+    .slogansSection--slogan img {
+      width: 70vw;
+      max-height: 30vw;
+      object-fit: cover;
+    }
+    & div:nth-child(1) img {
+      transform: scale(0.8);
+    }
+    & div:nth-child(2) {
+      background-color: $color-light-pink;
+    }
+  }
+
   .artMeetsCoffee {
     height: max-content;
     padding: 0;
 
     .artMeetsCoffee--grid {
       img {
-        width: 40vw;
+        width: 45vw;
         height: 50vw;
       }
       .artMeetsCoffee--grid-header {
-        width: 40vw;
+        width: 45vw;
+        height: 50vw;
         h2 {
           font-size: 4rem;
         }
@@ -348,25 +409,48 @@ main {
       justify-content: space-evenly;
       align-items: center;
       img {
-        width: 80vw;
+        width: 100vw;
+        max-height: 60vh;
       }
-      button {
-        width: 8rem;
-        height: 2.5rem;
-        font-size: 1rem;
-        top: 0;
-        left: calc(50% - 4rem);
+      .home--images-img2 {
+        button {
+          width: 8rem;
+          height: 2.5rem;
+          font-size: 1rem;
+          top: 30%;
+          left: calc(50% - 4rem);
+        }
       }
     }
   }
+
+  .slogansSection {
+    height: min-content;
+    .slogansSection--slogan {
+      height: max-content;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .slogansSection--slogan-text {
+        flex-grow: 0;
+        span {
+          font-size: calc($var-sizeL);
+        }
+        .span2 {
+          font-size: calc($var-sizeL + 6vw);
+          line-height: 2;
+        }
+      }
+    }
+  }
+
   .artMeetsCoffee {
     .artMeetsCoffee--grid {
       img {
-        width: 70vw;
+        width: 90vw;
         height: 80vw;
       }
       .artMeetsCoffee--grid-header {
-        width: 70vw;
+        width: 90vw;
         height: 80vw;
       }
       .h2meets {
