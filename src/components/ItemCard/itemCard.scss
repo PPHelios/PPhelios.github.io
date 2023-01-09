@@ -1,0 +1,27 @@
+.react-multi-carousel-list{
+  overflow: visible;
+.react-multi-carousel-dot-list{
+  bottom: -20px;
+  z-index: 2000;
+}  
+}
+.storeItem{
+  text-align: center;
+  
+img{
+  height: 60vh;
+  object-fit: cover;
+}
+
+}
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

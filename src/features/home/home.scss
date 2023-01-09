@@ -266,21 +266,13 @@ main {
     }
   }
 }
-.ourproducts {
-  .flex {
-    .box {
-      width: 30vw;
-      height: 45vw;
-    }
-    .red {
-      background-color: red;
-    }
-    .green {
-      background-color: green;
-    }
-    .blue {
-      background-color: blue;
-    }
+// Best sellers
+.bestSellers {
+  height: 100vh;
+ 
+  .bestSellers--title{
+    font-size: $var-sizeL;
+    text-align: center;
   }
 }
 

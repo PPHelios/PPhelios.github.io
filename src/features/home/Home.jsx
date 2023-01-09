@@ -1,4 +1,5 @@
 import { Button } from "../../components/Button.jsx/Button";
+import { Carousel2 } from "../../components/Carousel";
 import "./home.scss";
 import { Marquee } from "./Marquee";
 import { Navbar } from "./Navbar";
@@ -75,8 +76,8 @@ export const Home = () => {
       </section>
       <section className="bestSellers">
        <h2 className="bestSellers--title">Our Products</h2>
+       <Carousel2 />
        <div className="bestSellers--productsContainer">
-        <div className="big"></div>
        </div>
       </section>
     </>
