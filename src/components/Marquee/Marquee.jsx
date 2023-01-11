@@ -1,3 +1,4 @@
+import "./marquee.scss"
 export const Marquee = () => {
   return (
     <div className="marquee">
