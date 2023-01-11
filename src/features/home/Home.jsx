@@ -84,6 +84,9 @@ export const Home = () => {
         <div className="aboutAndJoin--about">
            <h2>Hi, We are <span>artz-coffee</span></h2>
         <p>We're making specialty coffee you can can drink and enjoy without pretentious notes and bluff. Think fun and approachable, not douchey. Inclusivity is at the core of what we do.</p>
+        <img className="aboutAndJoin--about-coffeeForEveryOne" src={require("../../assets/images/coffee-for-every-one.webp")} alt="coffee for every one image"/>
+        <img className="aboutAndJoin--about-coffeeCup" src={require("../../assets/images/coffee-cup.svg").default} alt="colorful cup of coffee"/>
+
         </div>
         <div className="aboutAndJoin--slogan">
            <p>great coffee <span>shouldn't be douchey</span></p>
@@ -93,10 +96,10 @@ export const Home = () => {
                <p>like and subscribe!!!</p>
             </div>
             <div className="aboutAndJoin--join-socialsBar">
-          <img  src={require("../../assets/images/facebook-logo.svg").default}/>
-          <img  src={require("../../assets/images/instagram-logo-pink.svg").default}/>
-          <img  src={require("../../assets/images/twitter-square-logo.svg").default}/>
-          <img  src={require("../../assets/images/tiktok-logo-pink.svg").default}/>
+          <a href="#"><img  src={require("../../assets/images/facebook-logo.svg").default} alt="facebook icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.svg").default} alt="instagram icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.svg").default} alt="twitter icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.svg").default} alt="tiktok icon"/></a>
         </div>
            </div>
         

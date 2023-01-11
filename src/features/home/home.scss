@@ -219,12 +219,11 @@ main {
       filter: brightness(90%);
     }
     .h2coffee {
-      // background-image: url("../../assets/images/coffee2.jpg");
-      background-color: $color-light-pink;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 0 50%;
-      filter: brightness(90%);
+    background-image: url("../../assets/images/h2art.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 70%;
+    filter: brightness(90%);
     }
   }
 }
@@ -322,8 +321,9 @@ main {
 }
 .aboutAndJoin{
   .aboutAndJoin--about{
-    padding: 4rem 8rem;
+    padding: 4rem 2rem 4rem 22rem;
     background-color: $color-light-pink;
+    position: relative;
     h2{
       margin-bottom: 1rem;
 font-size: 1.8rem;
@@ -338,6 +338,22 @@ font-size: 1.8rem;
     p{
       font-size: 2rem;
       line-height: 1.5;
+    }
+    .aboutAndJoin--about-coffeeForEveryOne{
+      width: 25rem;
+      height: 6rem;
+      top: 0;
+      left: 0;
+      transform: rotateZ(-10deg);
+      position: absolute;
+    }
+    .aboutAndJoin--about-coffeeCup{
+      width: 15rem;
+      height:15rem;
+      bottom: 0;
+      left: 8%;
+      transform: rotateZ(-10deg);
+      position: absolute;
     }
   }
   .aboutAndJoin--slogan{
@@ -362,21 +378,21 @@ background-color: $color-plum;
 
   .aboutAndJoin--join{
     padding: 2rem 3rem;
+    background-color: $color-light-blue;
     @include flexCenter;
     gap: 5rem;
 .aboutAndJoin--join-like{
   font-size: 2.2rem;
 }
 .aboutAndJoin--join-socialsBar{
-  &img:not(:first-child){
+   img{
+    width: 4rem;
+    height: 4rem;
+  }
+  a:not(:first-child){
     margin-left: 1rem;
-background-color: red;
   }
-
-  img{
-    width: 36px;
-    height: 36px;
-  }
+ 
 }
   }
 }
