@@ -125,54 +125,7 @@ main {
     transform: translateY(0);
   }
 }
-// slogansSection
-.slogansSection {
-  height: 100vh;
-  padding: 1rem;
-  overflow: hidden;
-  .slogansSection--slogan {
-    height: 48vh;
-    padding: 1rem 0;
-    background-color: $color-light-blue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    overflow: hidden;
-    .slogansSection--slogan-text {
-      font-size: $var-sizeL;
-      line-height: 1.5;
-      text-align: center;
-      flex-grow: 1;
-      overflow: hidden;
-      span {
-        font-size: $var-sizeL;
-        font-family: $font-sec;
-        letter-spacing: 5px;
-        color: $color-pink;
-      }
-      .span2 {
-        font-size: calc($var-sizeL + 5vw);
-        line-height: 0.8;
-        background-image: url("../../assets/images/coffee.jpg");
-        background-size: contain;
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-      }
-    }
-  }
-  .slogansSection--slogan img {
-    width: 50vw;
-    max-height: 46vh;
-    border-radius: $border-radius;
-    object-fit: contain;
-    object-position: center;
-  }
-  & div:nth-child(2) {
-    background-color: $color-light-pink;
-  }
-}
+
 // artMeetsCoffee
 .artMeetsCoffee {
   margin: 3rem 0;
@@ -219,19 +172,70 @@ main {
       filter: brightness(90%);
     }
     .h2coffee {
-    background-image: url("../../assets/images/h2art.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 70%;
-    filter: brightness(90%);
+      background-image: url("../../assets/images/h2art.jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 0 70%;
+      filter: brightness(90%);
     }
   }
 }
+
+// slogansSection
+.slogansSection {
+  height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
+  .slogansSection--slogan {
+    height: 48vh;
+    padding: 1rem 0;
+    background-color: $color-light-blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    .slogansSection--slogan-text {
+      font-size: $var-sizeL;
+      line-height: 1.5;
+      text-align: center;
+      flex-grow: 1;
+      overflow: hidden;
+      span {
+        font-size: $var-sizeL;
+        font-family: $font-sec;
+        letter-spacing: 5px;
+        color: $color-pink;
+      }
+      .span2 {
+        font-size: calc($var-sizeL + 5vw);
+        line-height: 0.8;
+        background-image: url("../../assets/images/coffee.jpg");
+        background-size: contain;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+    }
+  }
+  .slogansSection--slogan img {
+    width: 50vw;
+    max-height: 46vh;
+    border-radius: $border-radius;
+    object-fit: contain;
+    object-position: center;
+  }
+  & div:nth-child(2) {
+    background-color: $color-light-pink;
+  }
+}
+
 .bestSellers {
-  padding-inline: 1rem;
-  background-color: $color-light-yellow;
+  padding: 1rem;
+
   .bestSellers--title {
     padding: 1rem 0;
+    background-color: $color-light-yellow;
     font-family: $font-sec;
     font-size: $var-sizeL;
     text-align: center;
@@ -240,6 +244,7 @@ main {
   .bestSellers--carouselContainer {
     height: max-content;
     padding-bottom: 2rem;
+    background-color: $color-light-yellow;
     .slick-slide {
       .carouselItem {
         height: 80vh;
@@ -255,7 +260,6 @@ main {
         }
         &:hover .carouselItem--img {
           transform: rotateZ(-20deg);
-          
         }
         &:hover .carouselItem--img .carouselItem--img-price {
           transform: rotateZ(20deg);
@@ -300,12 +304,8 @@ main {
           }
         }
         button {
-          font-size: 1.2rem;
-          padding: 0.8rem 1.6rem;
-          background-color: $color-yellow;
-          border: none;
-          transition: transform 0.5s linear;
-          &:hover{
+       @include btn($color-yellow);
+          &:hover {
             transform: scale(1.1);
           }
           span {
@@ -319,15 +319,16 @@ main {
     }
   }
 }
-.aboutAndJoin{
-  .aboutAndJoin--about{
+.aboutAndJoin {
+  padding: 1rem;
+  .aboutAndJoin--about {
     padding: 4rem 2rem 4rem 22rem;
     background-color: $color-light-pink;
     position: relative;
-    h2{
+    h2 {
       margin-bottom: 1rem;
-font-size: 1.8rem;
-      span{
+      font-size: 1.8rem;
+      span {
         padding-left: 1rem;
         font-family: $font-sec;
         font-size: 2.2rem;
@@ -335,11 +336,11 @@ font-size: 1.8rem;
         text-transform: uppercase;
       }
     }
-    p{
+    p {
       font-size: 2rem;
       line-height: 1.5;
     }
-    .aboutAndJoin--about-coffeeForEveryOne{
+    .aboutAndJoin--about-coffeeForEveryOne {
       width: 25rem;
       height: 6rem;
       top: 0;
@@ -347,64 +348,133 @@ font-size: 1.8rem;
       transform: rotateZ(-10deg);
       position: absolute;
     }
-    .aboutAndJoin--about-coffeeCup{
+    .aboutAndJoin--about-coffeeCup {
       width: 15rem;
-      height:15rem;
+      height: 15rem;
       bottom: 0;
       left: 8%;
       transform: rotateZ(-10deg);
       position: absolute;
     }
   }
-  .aboutAndJoin--slogan{
+  .aboutAndJoin--slogan {
     padding: 2rem 3rem;
-background-color: $color-plum;
-    p{
+    background-color: $color-plum;
+    p {
       color: $color-white;
       margin-bottom: 1rem;
       font-size: 2.2rem;
       text-align: center;
-            span{
-              padding-left: 1rem;
-              font-family: $font-sec;
-              font-size: 2.2rem;
-              font-weight: 600;
-              font-style: italic;
-              letter-spacing: 2px;
-              text-transform: capitalize;
-            }
+      span {
+        padding-left: 1rem;
+        font-family: $font-sec;
+        font-size: 2.2rem;
+        font-weight: 600;
+        font-style: italic;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+      }
     }
   }
 
-  .aboutAndJoin--join{
+  .aboutAndJoin--join {
     padding: 2rem 3rem;
     background-color: $color-light-blue;
     @include flexCenter;
     gap: 5rem;
-.aboutAndJoin--join-like{
-  font-size: 2.2rem;
-}
-.aboutAndJoin--join-socialsBar{
-   img{
-    width: 4rem;
-    height: 4rem;
+    .aboutAndJoin--join-like {
+      font-size: 2.2rem;
+    }
+    .aboutAndJoin--join-socialsBar {
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+      a:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
   }
-  a:not(:first-child){
-    margin-left: 1rem;
-  }
- 
 }
+footer{
+.footer--waves{
+  width: 100%;
+  margin-bottom: -7px;
+}
+.footer--body {
+  padding:0 8rem 3rem ;
+    background-color: $color-green;
+    position: relative;
+  .footer--body-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .footer--body-top-about,
+    .footer--body-top-support {
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      h4 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+      }
+      a:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .footer--body-top-socialsBar {
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+      a:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
+  }
+  .footer--body-bottom{
+    margin-top: 1rem;
+    form{
+      width: 50%;
+      label{
+        font-size: 1.2rem;
+display:block;
+      }
+      input{
+        width: 100%;
+        height: 1.5rem;
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+        border: none;
+        border-bottom: 1px solid black;
+        font-size: 1.2rem;
+background-color: $color-green;
+display: block;
+outline: none;
+      }
+      button{
+         @include btn($color-black);
+        width: 100%;
+        margin: 1rem 0;
+        color: $color-white;
+        background-color: $color-black;
+        border: none;
+      }
+    }
+    
+  }
+  .footer--body-banner{
+    width: 30rem;
+    height: 15rem;
+    position: absolute;
+    bottom:0;
+    right: 4%;
   }
 }
-
-
-
-
-
-
-
-
-
+}
 // Responsive
 @media screen and (max-width: 825px) {
   nav {
@@ -457,6 +527,39 @@ background-color: $color-plum;
       transform: translateX(0);
     }
   }
+
+  .artMeetsCoffee {
+    height: max-content;
+    padding: 0;
+
+    .artMeetsCoffee--grid {
+      img {
+        width: 45vw;
+        height: 50vw;
+      }
+      .artMeetsCoffee--grid-header {
+        width: 45vw;
+        height: 50vw;
+        h2 {
+          font-size: 4rem;
+        }
+      }
+      .h2meets {
+        order: 4;
+      }
+      .artMeetsCoffee--grid-img2 {
+        order: 3;
+      }
+      .h2coffee {
+        order: 5;
+      }
+      .artMeetsCoffee--grid-img3 {
+        order: 6;
+      }
+    }
+  }
+
+
   // Slogan
   .slogansSection {
     height: min-content;
@@ -490,37 +593,80 @@ background-color: $color-plum;
       background-color: $color-light-pink;
     }
   }
+  // Footer
+  footer{
+    .footer--body {
+      padding:0 1rem 3rem ;
+        background-color: $color-green;
+        position: relative;
+      .footer--body-top {
 
-  .artMeetsCoffee {
-    height: max-content;
-    padding: 0;
-
-    .artMeetsCoffee--grid {
-      img {
-        width: 45vw;
-        height: 50vw;
-      }
-      .artMeetsCoffee--grid-header {
-        width: 45vw;
-        height: 50vw;
-        h2 {
-          font-size: 4rem;
+        .footer--body-top-about,
+        .footer--body-top-support {
+          font-size: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+          }
+          a:not(:first-child) {
+            margin-top: 0.5rem;
+          }
+        }
+    
+        .footer--body-top-socialsBar {
+          img {
+            width: 4rem;
+            height: 4rem;
+          }
+          a:not(:first-child) {
+            margin-left: 1rem;
+          }
         }
       }
-      .h2meets {
-        order: 4;
+      .footer--body-bottom{
+        margin-top: 1rem;
+        form{
+          width: 50%;
+          label{
+            font-size: 1.2rem;
+    display:block;
+          }
+          input{
+            width: 100%;
+            height: 1.5rem;
+            margin: 1rem 0;
+            padding: 0 0.5rem;
+            border: none;
+            border-bottom: 1px solid black;
+            font-size: 1.2rem;
+    background-color: $color-green;
+    display: block;
+    outline: none;
+          }
+          button{
+             @include btn($color-black);
+            width: 100%;
+            margin: 1rem 0;
+            color: $color-white;
+            background-color: $color-black;
+            border: none;
+          }
+        }
+        
       }
-      .artMeetsCoffee--grid-img2 {
-        order: 3;
-      }
-      .h2coffee {
-        order: 5;
-      }
-      .artMeetsCoffee--grid-img3 {
-        order: 6;
+      .footer--body-banner{
+        width: 30rem;
+        height: 15rem;
+        position: absolute;
+        bottom:0;
+        right: 4%;
       }
     }
-  }
+    }
 }
 @media screen and (max-width: 420px) {
   main {
@@ -544,26 +690,6 @@ background-color: $color-plum;
       }
     }
   }
-
-  .slogansSection {
-    height: min-content;
-    .slogansSection--slogan {
-      height: max-content;
-      flex-direction: column;
-      justify-content: space-evenly;
-      .slogansSection--slogan-text {
-        flex-grow: 0;
-        span {
-          font-size: calc($var-sizeL);
-        }
-        .span2 {
-          font-size: calc($var-sizeL + 6vw);
-          line-height: 2;
-        }
-      }
-    }
-  }
-
   .artMeetsCoffee {
     .artMeetsCoffee--grid {
       img {
@@ -585,6 +711,24 @@ background-color: $color-plum;
       }
       .artMeetsCoffee--grid-img3 {
         order: 6;
+      }
+    }
+  }
+  .slogansSection {
+    height: min-content;
+    .slogansSection--slogan {
+      height: max-content;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .slogansSection--slogan-text {
+        flex-grow: 0;
+        span {
+          font-size: calc($var-sizeL);
+        }
+        .span2 {
+          font-size: calc($var-sizeL + 6vw);
+          line-height: 2;
+        }
       }
     }
   }

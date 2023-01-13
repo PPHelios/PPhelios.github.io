@@ -82,7 +82,7 @@ export const Home = () => {
 
       <section className="aboutAndJoin">
         <div className="aboutAndJoin--about">
-           <h2>Hi, We are <span>artz-coffee</span></h2>
+           <h2>Hi, We are <span>dass-coffee</span></h2>
         <p>We're making specialty coffee you can can drink and enjoy without pretentious notes and bluff. Think fun and approachable, not douchey. Inclusivity is at the core of what we do.</p>
         <img className="aboutAndJoin--about-coffeeForEveryOne" src={require("../../assets/images/coffee-for-every-one.webp")} alt="coffee for every one image"/>
         <img className="aboutAndJoin--about-coffeeCup" src={require("../../assets/images/coffee-cup.svg").default} alt="colorful cup of coffee"/>
@@ -101,9 +101,43 @@ export const Home = () => {
           <a href="#"><img  src={require("../../assets/images/twitter-square-logo.svg").default} alt="twitter icon"/></a>
           <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.svg").default} alt="tiktok icon"/></a>
         </div>
-           </div>
-        
+           </div>      
       </section>
+
+      <footer>
+      <img className="footer--waves" src={require("../../assets/images/wave.jpg") }alt="coffee for every one banner" />
+      <div className="footer--body">
+        <div className="footer--body-top">
+          <div className="footer--body-top-about">
+            <h4>About</h4>
+            <a href="#">Our Story</a>
+            <a href="#">Refund Policy</a>
+            <a href="#">Location</a>
+          </div>
+          <div className="footer--body-top-support">
+          <h4>Support</h4>
+            <a href="#">FAQs</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping & Returns</a>
+          </div>
+          <div className="footer--body-top-socialsBar">
+          <a href="#"><img  src={require("../../assets/images/facebook-logo.svg").default} alt="facebook icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.svg").default} alt="instagram icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.svg").default} alt="twitter icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.svg").default} alt="tiktok icon"/></a>
+        
+          </div>
+        </div>
+        <div className="footer--body-bottom">
+          <form>
+            <label htmlFor="subscribeToNewsLetter">Enter Your Email</label>
+            <input id="subscribeToNewsLetter" type="email" autoCorrect="false" autoCapitalize="false" required/>
+            <button>Subscribe To Our News Letter</button>
+          </form>
+        </div>
+        <img className="footer--body-banner" src={require("../../assets/images/coffee-for-every-one2.png") }alt="coffee for every one banner" />
+        </div>
+      </footer>
     </>
   );
 };
