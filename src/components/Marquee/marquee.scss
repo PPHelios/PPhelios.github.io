@@ -1,0 +1,52 @@
+@import "../../sass/variables";
+// Reset file must include
+// html{
+//   overflow-x: hidden;
+// }
+// body {
+//   font-family: $font-main;
+//   overflow: hidden;
+// }
+
+.marquee {
+  width: 200%;
+  min-width: max-content;
+  background-color: $color-orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-X: hidden;
+  
+  &:hover {
+    animation-play-state: paused;
+    overflow: hidden;
+  }
+  .marquee--content {
+    width: 50%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation-name: marquee;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: normal;
+    overflow-x: hidden;
+    h4 {
+      font-size: $var-sizeS;
+      letter-spacing: 1px;
+      font-family: $font-sec;
+      overflow-x: hidden;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
