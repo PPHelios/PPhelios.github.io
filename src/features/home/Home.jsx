@@ -5,6 +5,10 @@ import { Marquee } from "../../components/Marquee/Marquee";
 import { Navbar } from "./Navbar";
 
 export const Home = () => {
+  const browserWindow = ()=>{
+    console.log(window.innerWidth, window.innerHeight)
+  }
+  browserWindow()
   return (
     <>
       <Marquee />
@@ -134,6 +138,8 @@ export const Home = () => {
             <input id="subscribeToNewsLetter" type="email" autoCorrect="false" autoCapitalize="false" required/>
             <button>Subscribe To Our News Letter</button>
           </form>
+          <img className="footer--body-logo" src={require("../../assets/images/green-logo.webp") }alt="dass-coffee logo" />
+
         </div>
         <img className="footer--body-banner" src={require("../../assets/images/coffee-for-every-one2.png") }alt="coffee for every one banner" />
         </div>
