@@ -16,16 +16,16 @@ export const Home = () => {
       <main>
         <div className="home--images">
           <div className="home--images-img1">
-            <img src={require("../../assets/images/body1.jpg")}
+            <img src={require("../../assets/images/body1.webp")}
             alt="artistic coffee package"/>
           </div>
           <div className="home--images-img2">
-            <img src={require("../../assets/images/body2.jpg")}
+            <img src={require("../../assets/images/body2.webp")}
             alt="artistic coffee package"/>
             <Button text="Buy Now" />
           </div>
           <div className="home--images-img3">
-            <img src={require("../../assets/images/shop1.jpg")}
+            <img src={require("../../assets/images/shop1.webp")}
             alt="artistic coffee package"/>
           </div>
         </div>
@@ -37,7 +37,7 @@ export const Home = () => {
           </div>
           <img
             className="artMeetsCoffee--grid-img1"
-            src={require("../../assets/images/art1.jpg")}
+            src={require("../../assets/images/art1.webp")}
             alt="artistic coffee package"
           />
           <div className="artMeetsCoffee--grid-header h2meets">
@@ -45,7 +45,7 @@ export const Home = () => {
           </div>
           <img
             className="artMeetsCoffee--grid-img2"
-            src={require("../../assets/images/art2.jpg")}
+            src={require("../../assets/images/art2.webp")}
             alt="artistic coffee package"
           />
           <div className="artMeetsCoffee--grid-header h2coffee">
@@ -53,7 +53,7 @@ export const Home = () => {
           </div>
           <img
             className="artMeetsCoffee--grid-img3"
-            src={require("../../assets/images/art3.jpg")} 
+            src={require("../../assets/images/art3.webp")} 
             alt="artistic coffee package"
           />
         </div>
@@ -64,11 +64,11 @@ export const Home = () => {
             A Hot Cup of <br />
             <span>Happiness</span>
           </h2>
-          <img src={require("../../assets/images/slogan1.jpg")} 
+          <img src={require("../../assets/images/slogan1.webp")} 
           alt="cup of coffee with heart shaped cream"/>
         </div>
         <div className="slogansSection--slogan">
-          <img src={require("../../assets/images/slogan2.jpg")} 
+          <img src={require("../../assets/images/slogan2.webp")} 
           alt="heart of coffee beans" />
             <h2 className="slogansSection--slogan-text text2">
               Better Beans, Better <br />
@@ -89,7 +89,7 @@ export const Home = () => {
            <h2>Hi, We are <span>dass-coffee</span></h2>
         <p>We're making specialty coffee you can can drink and enjoy without pretentious notes and bluff. Think fun and approachable, not douchey. Inclusivity is at the core of what we do.</p>
         <img className="aboutAndJoin--about-coffeeForEveryOne" src={require("../../assets/images/coffee-for-every-one.webp")} alt="coffee for every one image"/>
-        <img className="aboutAndJoin--about-coffeeCup" src={require("../../assets/images/coffee-cup.svg").default} alt="colorful cup of coffee"/>
+        <img className="aboutAndJoin--about-coffeeCup" src={require("../../assets/images/coffee-cup.webp")} alt="colorful cup of coffee"/>
 
         </div>
         <div className="aboutAndJoin--slogan">
@@ -100,16 +100,16 @@ export const Home = () => {
                <p>like and subscribe!!!</p>
             </div>
             <div className="aboutAndJoin--join-socialsBar">
-          <a href="#"><img  src={require("../../assets/images/facebook-logo.svg").default} alt="facebook icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.svg").default} alt="instagram icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.svg").default} alt="twitter icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.svg").default} alt="tiktok icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/facebook-logo.webp")} alt="facebook icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.webp")} alt="instagram icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.webp")} alt="twitter icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.webp")} alt="tiktok icon"/></a>
         </div>
            </div>      
       </section>
 
       <footer>
-      <img className="footer--waves" src={require("../../assets/images/wave.jpg") }alt="coffee for every one banner" />
+      <img className="footer--waves" src={require("../../assets/images/wave.webp") }alt="coffee for every one banner" />
       <div className="footer--body">
         <div className="footer--body-top">
           <div className="footer--body-top-about">
@@ -125,10 +125,10 @@ export const Home = () => {
             <a href="#">Shipping & Returns</a>
           </div>
           <div className="footer--body-top-socialsBar">
-          <a href="#"><img  src={require("../../assets/images/facebook-logo.svg").default} alt="facebook icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.svg").default} alt="instagram icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.svg").default} alt="twitter icon"/></a>
-          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.svg").default} alt="tiktok icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/facebook-logo.webp")} alt="facebook icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/instagram-logo-pink.webp")} alt="instagram icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/twitter-square-logo.webp")} alt="twitter icon"/></a>
+          <a href="#"><img  src={require("../../assets/images/tiktok-logo-pink.webp")} alt="tiktok icon"/></a>
         
           </div>
         </div>
@@ -141,7 +141,7 @@ export const Home = () => {
           <img className="footer--body-logo" src={require("../../assets/images/green-logo.webp") }alt="dass-coffee logo" />
 
         </div>
-        <img className="footer--body-banner" src={require("../../assets/images/coffee-for-every-one2.png") }alt="coffee for every one banner" />
+        <img className="footer--body-banner" src={require("../../assets/images/coffee-for-every-one2.webp") }alt="coffee for every one banner" />
         </div>
       </footer>
     </>
