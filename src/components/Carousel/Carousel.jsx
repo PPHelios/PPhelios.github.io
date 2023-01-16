@@ -8,9 +8,9 @@ const shopItems = [
     id: 0,
     name: "The General",
     description:
-    "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin! It tastes very much peachy and caramely -- yum!",
-price: "70$",
-discountedPrice: "65$",
+      "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin! It tastes very much peachy and caramely -- yum!",
+    price: "70$",
+    discountedPrice: "65$",
     img: "shop1",
     alt: "shop coffee item",
   },
@@ -121,20 +121,21 @@ export const Carousel = () => {
             <div className="carouselItem" key={item.id}>
               <div className="carouselItem--img">
                 <img
-                src={require("../../assets/images/" + item.img + ".jpg")}
-                alt={item.alt}
-              />
-               <div className="carouselItem--img-price">{item.price}</div>
+                  src={require("../../assets/images/" + item.img + ".webp")}
+                  alt={item.alt}
+                />
+                <div className="carouselItem--img-price">{item.price}</div>
               </div>
-              
+
               <div className="carouselItem--details">
                 <div className="carouselItem--details-description">
                   <h5>{item.name}</h5>
                   <p>{item.description}</p>
                 </div>
-               
               </div>
-              <button>Add To Cart <span>{item.discountedPrice}</span></button>
+              <button>
+                Add To Cart <span>{item.discountedPrice}</span>
+              </button>
             </div>
           );
         })}

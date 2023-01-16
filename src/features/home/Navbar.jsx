@@ -13,9 +13,9 @@ export const Navbar = () => {
         <a href="#">Location</a>
       </div>
       <div className="nav-right">
-        <span class="material-symbols-outlined">search</span>
-        <span class="material-symbols-outlined">person</span>
-        <span class="material-symbols-outlined">shopping_bag</span>
+        <span className="material-symbols-outlined">search</span>
+        <span className="material-symbols-outlined">person</span>
+        <span className="material-symbols-outlined">shopping_bag</span>
       </div>
     </nav>
   );
