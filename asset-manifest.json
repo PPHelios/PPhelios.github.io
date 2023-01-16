@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dass-coffee/static/css/main.7d49c792.css",
-    "main.js": "/dass-coffee/static/js/main.850ff822.js",
+    "main.css": "/dass-coffee/static/css/main.3a30a5d0.css",
+    "main.js": "/dass-coffee/static/js/main.ac4266c2.js",
     "static/js/787.7b63f85e.chunk.js": "/dass-coffee/static/js/787.7b63f85e.chunk.js",
     "static/media/bokeh.webp": "/dass-coffee/static/media/bokeh.ddd686f77229679b5cbf.webp",
     "static/media/shop3.webp": "/dass-coffee/static/media/shop3.f10e4ccc14a12c8f9a9a.webp",
@@ -44,12 +44,12 @@
     "index.html": "/dass-coffee/index.html",
     "static/media/smile.webp": "/dass-coffee/static/media/smile.d888d91511ba92826903.webp",
     "static/media/smdg.webp": "/dass-coffee/static/media/smdg.43398b174759653a67f7.webp",
-    "main.7d49c792.css.map": "/dass-coffee/static/css/main.7d49c792.css.map",
-    "main.850ff822.js.map": "/dass-coffee/static/js/main.850ff822.js.map",
+    "main.3a30a5d0.css.map": "/dass-coffee/static/css/main.3a30a5d0.css.map",
+    "main.ac4266c2.js.map": "/dass-coffee/static/js/main.ac4266c2.js.map",
     "787.7b63f85e.chunk.js.map": "/dass-coffee/static/js/787.7b63f85e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d49c792.css",
-    "static/js/main.850ff822.js"
+    "static/css/main.3a30a5d0.css",
+    "static/js/main.ac4266c2.js"
   ]
 }
