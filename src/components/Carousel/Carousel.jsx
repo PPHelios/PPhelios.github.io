@@ -125,11 +125,11 @@ export const Carousel = () => {
                   alt={item.alt}
                 />
                 <div className="carouselItem--img-price">{item.price}</div>
+                <h5>{item.name}</h5>
               </div>
 
               <div className="carouselItem--details">
                 <div className="carouselItem--details-description">
-                  <h5>{item.name}</h5>
                   <p>{item.description}</p>
                 </div>
               </div>

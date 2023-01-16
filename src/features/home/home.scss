@@ -87,7 +87,7 @@ main {
     position: absolute;
     bottom: 10%;
     left: calc(50% - 7rem);
-    animation: 2s home-btn infinite ease-in-out;
+    animation: 2s home-btn infinite ease-in-out 1s;
     z-index: 10;
     opacity: 0;
     &:hover {
@@ -246,9 +246,9 @@ main {
     padding-bottom: 2rem;
     background-color: $color-light-yellow;
     .slick-slide {
-      height: 80vh;
+      height: 90vh;
       .carouselItem {
-        height: 80vh;
+        height: 90vh;
         padding: 1rem;
         display: flex !important;
         flex-direction: column;
@@ -282,24 +282,23 @@ main {
             border-radius: 50%;
             @include flexCenter;
             position: absolute;
-            bottom: 0;
+            bottom: 12%;
             right: 0;
             transform: translate(-5%, -5%);
             transition: transform 1s ease-out;
           }
+          h5 {
+            margin-top: 1rem;
+            font-family: $font-sec;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+          }
         }
 
         .carouselItem--details {
-          z-index: 100;
           .carouselItem--details-description {
-            h5 {
-              margin-bottom: 0.2rem;
-              font-family: $font-sec;
-              font-size: 1.4rem;
-              letter-spacing: 2px;
-            }
             p {
-              font-size: 0.9rem;
+              font-size: 1.2rem;
               line-height: 1.3;
             }
           }
@@ -585,9 +584,7 @@ footer {
       height: max-content;
       background-color: $color-light-yellow;
       .slick-slide {
-        height: 90vh;
         .carouselItem {
-          height: 90vh;
           padding: 1rem;
           gap: 0.2rem;
           &:hover {
@@ -598,8 +595,6 @@ footer {
           }
           &:hover .carouselItem--img .carouselItem--img-price {
             transform: none;
-          }
-          .carouselItem--details {
           }
           button {
             &:hover {
@@ -758,12 +753,10 @@ footer {
       padding-bottom: 0;
     }
     .bestSellers--carouselContainer {
-      height: max-content;
       background-color: $color-light-yellow;
       .slick-slide {
-        height: 80vh;
+        height: 90vh;
         .carouselItem {
-          height: 80vh;
           padding: 1rem;
           &:hover {
             background-color: $color-light-yellow;
@@ -782,6 +775,14 @@ footer {
             }
             span {
               font-size: 1.1rem;
+            }
+          }
+          .carouselItem--details {
+            .carouselItem--details-description {
+              p {
+                font-size: 1.4rem;
+                line-height: 1.4;
+              }
             }
           }
         }
@@ -815,7 +816,7 @@ footer {
       p {
         font-size: 2rem;
         span {
-          font-size: 1.4rem;
+          font-size: 1.7rem;
         }
       }
     }
