@@ -67,11 +67,11 @@ main {
 .home--images-img1,
 .home--images-img3 {
   position: relative;
-  animation: 2s home-img ease-out;
+  // animation: 2s home-img ease-out;
 }
 .home--images-img2 {
   position: relative;
-  animation: 2s home-img2 ease-out;
+  // animation: 2s home-img2 ease-out;
   .home--images-img2 img {
     position: absolute;
     bottom: 20vh;
@@ -87,7 +87,7 @@ main {
     position: absolute;
     bottom: 10%;
     left: calc(50% - 7rem);
-    animation: 2s home-btn infinite ease-in-out 3.5s;
+    animation: 2s home-btn infinite ease-in-out;
     z-index: 10;
     opacity: 0;
     &:hover {
@@ -668,12 +668,9 @@ footer {
       .footer--body-bottom {
         margin-top: 1rem;
         form {
-          label {
-          }
           input {
             width: 100%;
-            height: 1.4rem;
-            margin: 0.8rem 0;
+            height: 1.3rem;
           }
           button {
             @include btn($color-black);
@@ -684,7 +681,7 @@ footer {
       }
       .footer--body-banner {
         width: 50%;
-        height: 50%;
+        height: 40%;
         right: 1%;
       }
     }
@@ -777,8 +774,6 @@ footer {
           &:hover .carouselItem--img .carouselItem--img-price {
             transform: none;
           }
-          .carouselItem--details {
-          }
           button {
             padding: 0.6rem 0.9rem;
             font-size: 1rem;
@@ -802,11 +797,14 @@ footer {
       h2 {
         font-size: 1.6rem;
         span {
-          font-size: 1.8rem;
+          padding-left: 0.2rem;
+          font-size: 1.65rem;
+          letter-spacing: 1px;
         }
       }
       p {
         font-size: 1.8rem;
+        z-index: 100;
       }
       .aboutAndJoin--about-coffeeCup {
         right: 0;
@@ -840,7 +838,6 @@ footer {
   // Footer
   footer {
     .footer--body {
-      padding: 0 1rem 1rem;
       .footer--body-top {
         justify-content: space-evenly;
         flex-wrap: wrap;
@@ -855,26 +852,24 @@ footer {
         }
       }
       .footer--body-bottom {
-        margin-top: 1rem;
         form {
-          label {
-          }
+          width: 100%;
           input {
             width: 100%;
-            height: 1.4rem;
+            height: 1.2rem;
             margin: 0.8rem 0;
           }
           button {
-            @include btn($color-black);
             margin: 0.8rem 0;
-            font-size: 1rem;
+            font-size: 0.9rem;
           }
+        }
+        .footer--body-logo {
+          width: 100%;
         }
       }
       .footer--body-banner {
-        width: 50%;
-        height: 50%;
-        right: 1%;
+        display: none;
       }
     }
   }
