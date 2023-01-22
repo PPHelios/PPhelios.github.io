@@ -1,22 +1,21 @@
 @import "../../sass/variables";
 
 main {
-  margin-top: 50px;
+  margin-top: 70px;
   position: relative;
   overflow: hidden;
 }
 
 .home--images {
   width: 100%;
-  height: 80vh;
+  max-height: 80vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   img {
     width: 32.8vw;
     padding: 0 1rem;
-    max-height: 78vh;
     object-fit: cover;
   }
 }
@@ -41,13 +40,13 @@ main {
     background-color: $color-orange;
     border: none;
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: calc(50% - 7rem);
     animation: 2s home-btn infinite ease-in-out 1s;
     z-index: 10;
     opacity: 0;
     &:hover {
-      background-color: $color-light-yellow;
+      background-color: $color-pink;
       transition: $transition;
     }
   }
@@ -93,7 +92,7 @@ main {
     gap: 1rem;
     img {
       width: 30vw;
-      max-height: 46vh;
+      max-height: 48vh;
       object-fit: cover;
       border-radius: $border-radius;
     }
@@ -202,9 +201,9 @@ main {
     padding-bottom: 2rem;
     background-color: $color-light-yellow;
     .slick-slide {
-      height: 90vh;
+      height: 85vh;
       .carouselItem {
-        height: 90vh;
+        height: 85vh;
         padding: 1rem;
         display: flex !important;
         flex-direction: column;
@@ -255,7 +254,7 @@ main {
           .carouselItem--details-description {
             p {
               font-size: 1.2rem;
-              line-height: 1.3;
+              line-height: 1.2;
             }
           }
         }
@@ -265,9 +264,9 @@ main {
             transform: scale(1.1);
           }
           span {
-            padding-left: 0.9rem;
+            padding-left: 0.5rem;
             border-left: 1px solid black;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 600;
           }
         }
@@ -363,7 +362,7 @@ footer {
     margin-bottom: -7px;
   }
   .footer--body {
-    padding: 0 1rem;
+    padding: 0 10rem;
     background-color: $color-green;
     position: relative;
     .footer--body-top {
@@ -448,9 +447,8 @@ footer {
   }
   main {
     height: max-content;
-    margin-top: 56px;
     .home--images {
-      height: max-content;
+      max-height: max-content;
       flex-wrap: wrap;
       justify-content: center;
       img {
@@ -502,7 +500,7 @@ footer {
         height: 50vw;
       }
       .artMeetsCoffee--grid-header {
-        width: 45vw;
+        width: 44vw;
         height: 50vw;
         h2 {
           font-size: 4rem;
@@ -641,7 +639,6 @@ footer {
 }
 @media screen and (max-width: 665px) {
   main {
-    margin-top: 66px;
     .home--images {
       display: flex;
       flex-wrap: wrap;
@@ -649,7 +646,6 @@ footer {
       align-items: center;
       img {
         width: 100vw;
-        max-height: 60vh;
       }
       .home--images-img2 {
         button {
@@ -713,8 +709,9 @@ footer {
     .bestSellers--carouselContainer {
       background-color: $color-light-yellow;
       .slick-slide {
-        height: 90vh;
+        height: 75vh;
         .carouselItem {
+          height: 75vh;
           padding: 1rem;
           &:hover {
             background-color: $color-light-yellow;
@@ -738,8 +735,8 @@ footer {
           .carouselItem--details {
             .carouselItem--details-description {
               p {
-                font-size: 1.4rem;
-                line-height: 1.4;
+                font-size: 1.2rem;
+                line-height: 1.2;
               }
             }
           }

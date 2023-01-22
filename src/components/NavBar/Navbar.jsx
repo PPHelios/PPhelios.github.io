@@ -1,11 +1,16 @@
 import { useRef } from "react";
 import { useState, useEffect } from "react";
+import Cart from "../Cart/Cart";
+import { useCartStore } from "../../store/store";
 import "./navBar.scss";
 
 export const Navbar = () => {
+  const totalItems = useCartStore((state) => state.cartTotalItems());
   const [menuOpened, setMenuOpened] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const navRef = useRef(null);
+  const shoppingBagRef = useRef(null);
   useEffect(() => {
     // set initial value
     const mediaWatcher = window.matchMedia("(max-width: 667px)");
@@ -16,24 +21,15 @@ export const Navbar = () => {
       setIsNarrowScreen(e.matches);
       setMenuOpened(false);
       // Set top for navbar
-      const top = isNarrowScreen ? "48px" : "39px";
-      if (window.scrollY < 50) {
-        navRef.current.style.top = top;
-      } else {
-        navRef.current.style.top = "0";
-      }
     }
     mediaWatcher.addEventListener("change", updateIsNarrowScreen);
     // Set top for navbar
 
     function handleNavigation(e) {
-      console.log(window.scrollY);
-      const top = isNarrowScreen ? "48px" : "39px";
       if (window.scrollY < 50) {
-        console.log(navRef.current);
-        navRef.current.style.top = top;
+        navRef.current.style.top = "50px";
       } else {
-        navRef.current.style.top = "0";
+        navRef.current.style.top = "10px";
       }
     }
     window.addEventListener("scroll", handleNavigation);
@@ -43,12 +39,20 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleNavigation);
     };
   });
-
+  useEffect(() => {
+    if (totalItems !== 0) {
+      shoppingBagRef.current.style.color = `#ff5b19`;
+    } else {
+      shoppingBagRef.current.style.color = `#fff`;
+    }
+  }, [totalItems]);
   return (
     <nav ref={navRef}>
       <div className="nav-left">
         <div className="logo"></div>
-        <h3>Dass Coffee</h3>
+        <a href="#marquee">
+          <h3>Dass Coffee</h3>
+        </a>
       </div>
       <div className="nav-main">
         {(menuOpened || !isNarrowScreen) && (
@@ -68,16 +72,36 @@ export const Navbar = () => {
               <span className="material-symbols-outlined">menu</span>
             )}
           </button>
-
-          <h3>Dass Coffee</h3>
-          <span className="material-symbols-outlined">shopping_bag</span>
+          <a href="#marquee">
+            <h3>Dass Coffee</h3>
+          </a>
+          <div className="nav-main-responsive-shoppingBag">
+            <span
+              className="material-symbols-outlined"
+              onClick={() => setCartOpen(!cartOpen)}
+              ref={shoppingBagRef}
+            >
+              shopping_bag
+            </span>
+            <div>{totalItems > 0 && totalItems}</div>
+          </div>
         </div>
       </div>
       <div className="nav-right">
         <span className="material-symbols-outlined">search</span>
         <span className="material-symbols-outlined">person</span>
-        <span className="material-symbols-outlined">shopping_bag</span>
+        <div className="nav-right-shoppingBag">
+          <span
+            className="material-symbols-outlined"
+            onClick={() => setCartOpen(!cartOpen)}
+            ref={shoppingBagRef}
+          >
+            shopping_bag
+          </span>
+          <div>{totalItems > 0 && totalItems}</div>
+        </div>
       </div>
+      {cartOpen && <Cart onClick={setCartOpen} />}
     </nav>
   );
 };

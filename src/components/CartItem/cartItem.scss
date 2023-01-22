@@ -1,0 +1,40 @@
+@import "../../sass/variables";
+.cartItem {
+  padding: 0 3rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .cartItem--item-img img {
+    height: 4rem;
+    object-fit: cover;
+  }
+  .cartItem--item-data {
+    .cartItem--item-data-quantity {
+      @include flexCenter;
+      div {
+        padding: 0 1rem;
+      }
+    }
+  }
+  .cartItem--item-price {
+    @include flexCenter;
+    gap: 1rem;
+  }
+  button {
+    width: 4rem;
+    height: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: $color-orange;
+    border: none;
+    transition: $transition;
+    @include flexCenter;
+    &:hover {
+      background-color: rgba($color-orange, 0.8);
+    }
+  }
+}
+@media screen and (max-width: 825px) {
+  .cartItem {
+    padding: 0 1rem;
+  }
+}

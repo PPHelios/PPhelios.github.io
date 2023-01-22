@@ -1,7 +1,7 @@
 import "./marquee.scss";
 export const Marquee = () => {
   return (
-    <div className="marquee">
+    <div className="marquee" id="marquee">
       <div className="marquee--content">
         <img src={require("../../assets/images/smile.webp")} alt="smiley" />
         <h4>subscreibe and save</h4>
