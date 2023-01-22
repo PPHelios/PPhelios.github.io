@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dass-coffee/static/css/main.918cc873.css",
-    "main.js": "/dass-coffee/static/js/main.fc12dfdf.js",
-    "static/js/213.a6b05dd4.chunk.js": "/dass-coffee/static/js/213.a6b05dd4.chunk.js",
-    "static/js/782.9703cc28.chunk.js": "/dass-coffee/static/js/782.9703cc28.chunk.js",
-    "static/css/679.05adbbaf.chunk.css": "/dass-coffee/static/css/679.05adbbaf.chunk.css",
-    "static/js/679.0535e4f1.chunk.js": "/dass-coffee/static/js/679.0535e4f1.chunk.js",
-    "static/js/442.db408ba6.chunk.js": "/dass-coffee/static/js/442.db408ba6.chunk.js",
-    "static/js/351.00d0e7bc.chunk.js": "/dass-coffee/static/js/351.00d0e7bc.chunk.js",
+    "main.css": "/dass-coffee/static/css/main.29697b3e.css",
+    "main.js": "/dass-coffee/static/js/main.5c867dcd.js",
+    "static/js/213.4d39e4fc.chunk.js": "/dass-coffee/static/js/213.4d39e4fc.chunk.js",
+    "static/js/782.66f69808.chunk.js": "/dass-coffee/static/js/782.66f69808.chunk.js",
+    "static/css/679.a548f0e2.chunk.css": "/dass-coffee/static/css/679.a548f0e2.chunk.css",
+    "static/js/679.edb1d882.chunk.js": "/dass-coffee/static/js/679.edb1d882.chunk.js",
+    "static/js/442.3a918237.chunk.js": "/dass-coffee/static/js/442.3a918237.chunk.js",
+    "static/js/351.8d25b05e.chunk.js": "/dass-coffee/static/js/351.8d25b05e.chunk.js",
     "static/js/787.7b63f85e.chunk.js": "/dass-coffee/static/js/787.7b63f85e.chunk.js",
-    "static/js/985.527579aa.chunk.js": "/dass-coffee/static/js/985.527579aa.chunk.js",
+    "static/js/717.c6e836b2.chunk.js": "/dass-coffee/static/js/717.c6e836b2.chunk.js",
     "static/media/bokeh.webp": "/dass-coffee/static/media/bokeh.ddd686f77229679b5cbf.webp",
     "static/media/shop3.webp": "/dass-coffee/static/media/shop3.f10e4ccc14a12c8f9a9a.webp",
     "static/media/shop6.webp": "/dass-coffee/static/media/shop6.ab0ea3fb4269ca99d9ff.webp",
@@ -51,19 +51,19 @@
     "index.html": "/dass-coffee/index.html",
     "static/media/smile.webp": "/dass-coffee/static/media/smile.d888d91511ba92826903.webp",
     "static/media/smdg.webp": "/dass-coffee/static/media/smdg.43398b174759653a67f7.webp",
-    "main.918cc873.css.map": "/dass-coffee/static/css/main.918cc873.css.map",
-    "main.fc12dfdf.js.map": "/dass-coffee/static/js/main.fc12dfdf.js.map",
-    "213.a6b05dd4.chunk.js.map": "/dass-coffee/static/js/213.a6b05dd4.chunk.js.map",
-    "782.9703cc28.chunk.js.map": "/dass-coffee/static/js/782.9703cc28.chunk.js.map",
-    "679.05adbbaf.chunk.css.map": "/dass-coffee/static/css/679.05adbbaf.chunk.css.map",
-    "679.0535e4f1.chunk.js.map": "/dass-coffee/static/js/679.0535e4f1.chunk.js.map",
-    "442.db408ba6.chunk.js.map": "/dass-coffee/static/js/442.db408ba6.chunk.js.map",
-    "351.00d0e7bc.chunk.js.map": "/dass-coffee/static/js/351.00d0e7bc.chunk.js.map",
+    "main.29697b3e.css.map": "/dass-coffee/static/css/main.29697b3e.css.map",
+    "main.5c867dcd.js.map": "/dass-coffee/static/js/main.5c867dcd.js.map",
+    "213.4d39e4fc.chunk.js.map": "/dass-coffee/static/js/213.4d39e4fc.chunk.js.map",
+    "782.66f69808.chunk.js.map": "/dass-coffee/static/js/782.66f69808.chunk.js.map",
+    "679.a548f0e2.chunk.css.map": "/dass-coffee/static/css/679.a548f0e2.chunk.css.map",
+    "679.edb1d882.chunk.js.map": "/dass-coffee/static/js/679.edb1d882.chunk.js.map",
+    "442.3a918237.chunk.js.map": "/dass-coffee/static/js/442.3a918237.chunk.js.map",
+    "351.8d25b05e.chunk.js.map": "/dass-coffee/static/js/351.8d25b05e.chunk.js.map",
     "787.7b63f85e.chunk.js.map": "/dass-coffee/static/js/787.7b63f85e.chunk.js.map",
-    "985.527579aa.chunk.js.map": "/dass-coffee/static/js/985.527579aa.chunk.js.map"
+    "717.c6e836b2.chunk.js.map": "/dass-coffee/static/js/717.c6e836b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.918cc873.css",
-    "static/js/main.fc12dfdf.js"
+    "static/css/main.29697b3e.css",
+    "static/js/main.5c867dcd.js"
   ]
 }
