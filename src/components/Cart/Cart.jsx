@@ -22,28 +22,32 @@ export default function Cart({ onClick }) {
         </div>
 
         <div className="cart--cartItems">
-          {cartItems.length ? (
+          {cartItems.length > 0 ? (
             cartItems.map((item) => <CartItem item={item} key={item.id} />)
           ) : (
             <h4>Your Cart Is Empty...</h4>
           )}
         </div>
-        <div className="cart--info">
-          <h4 className="cart--info-subtotalBeforeDiscount">
-            Subtotal Before Discount:{" "}
-            <span>{cartBeforeDiscountTotalItemsPrice}$</span>
-          </h4>
-          <h4 className="cart--info-finalSubtotal">
-            Subtotal:{" "}
-            <span>
-              ({totalItems} items) {totalItemsPrice} $
-            </span>
-          </h4>
-        </div>
-        <div className="cart--btns">
-          <button>Continue Shopping</button>
-          <button>Proceed to Checkout</button>
-        </div>
+        {cartItems.length > 0 && (
+          <div className="cart--info">
+            <h4 className="cart--info-subtotalBeforeDiscount">
+              Subtotal Before Discount:{" "}
+              <span>{cartBeforeDiscountTotalItemsPrice}$</span>
+            </h4>
+            <h4 className="cart--info-finalSubtotal">
+              Subtotal:{" "}
+              <span>
+                ({totalItems} items) {totalItemsPrice} $
+              </span>
+            </h4>
+          </div>
+        )}
+        {cartItems.length > 0 && (
+          <div className="cart--btns">
+            <button>Continue Shopping</button>
+            <button>Proceed to Checkout</button>
+          </div>
+        )}
       </div>
     </div>
   );

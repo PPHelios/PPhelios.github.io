@@ -51,18 +51,17 @@ nav {
       div {
         width: 12px;
         height: 24px;
+        font-size: 1.3rem;
         position: absolute;
         @include flexCenter;
-        top: 10px;
+        top: 13px;
         left: 11px;
         color: $color-black;
       }
     }
   }
   .nav-main {
-    height: 100%;
     .nav-main-menu {
-      height: 100%;
       font-family: $font-sec;
       padding: $padding;
       background-color: $color-black;
@@ -102,23 +101,30 @@ nav {
     }
     .nav-main {
       width: 100%;
+      background-color: $color-black;
       position: relative;
+      z-index: 100;
       .nav-main-menu {
         width: 100%;
+        background-color: $color-black;
         flex-direction: column;
-        gap: 1rem;
         position: absolute;
-        top: 45px;
+        top: 50px;
         z-index: 1000;
         animation: 1s nav-menu ease-out;
         & a {
-          font-size: 2rem;
-          padding: $padding;
+          width: 100%;
+          padding: 1rem 0;
+          font-size: 1.4rem;
+          letter-spacing: 2px;
           color: $color-white;
           z-index: 100;
           &:hover {
             color: $color-orange;
             transition: $transition;
+          }
+          &:not(:last-child) {
+            border-bottom: 1px solid $color-gray;
           }
         }
       }
@@ -126,11 +132,6 @@ nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        button {
-          background-color: $color-black;
-          border: none;
-          padding: 0;
-        }
         h3 {
           color: $color-white;
           a {
@@ -150,21 +151,14 @@ nav {
         }
         .nav-main-responsive-shoppingBag {
           position: relative;
-          span {
-            font-size: 2.2rem;
-            color: $color-white;
-            cursor: pointer;
-            transition: 0.5s linear;
-            font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
-
-            &:hover {
-              color: $color-orange;
-            }
-          }
           div {
+            width: 12px;
+            height: 24px;
+            font-size: 1.3rem;
             position: absolute;
-            top: 20%;
-            left: 35%;
+            @include flexCenter;
+            top: 13px;
+            left: 11px;
             color: $color-black;
           }
         }

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import { useCartStore } from "../../store/store";
 import "./navBar.scss";
@@ -40,68 +41,67 @@ export const Navbar = () => {
     };
   });
   useEffect(() => {
-    if (totalItems !== 0) {
+    if (totalItems > 0) {
       shoppingBagRef.current.style.color = `#ff5b19`;
     } else {
       shoppingBagRef.current.style.color = `#fff`;
     }
   }, [totalItems]);
   return (
-    <nav ref={navRef}>
-      <div className="nav-left">
-        <div className="logo"></div>
-        <a href="#marquee">
-          <h3>Dass Coffee</h3>
-        </a>
-      </div>
-      <div className="nav-main">
-        {(menuOpened || !isNarrowScreen) && (
-          <div className="nav-main-menu">
-            <a href="#">Shop</a>
-            <a href="#">About Us</a>
-            <a href="#">Icon</a>
-            <a href="#">Contact</a>
-            <a href="#">Location</a>
-          </div>
-        )}
-        <div className="nav-main-responsive">
-          <button onClick={() => setMenuOpened(!menuOpened)}>
-            {menuOpened ? (
-              <span className="material-symbols-outlined">close</span>
-            ) : (
-              <span className="material-symbols-outlined">menu</span>
-            )}
-          </button>
+    <>
+      <nav ref={navRef}>
+        <div className="nav-left">
+          <div className="logo"></div>
           <a href="#marquee">
             <h3>Dass Coffee</h3>
           </a>
-          <div className="nav-main-responsive-shoppingBag">
-            <span
-              className="material-symbols-outlined"
+        </div>
+        <div className="nav-main">
+          {(menuOpened || !isNarrowScreen) && (
+            <div className="nav-main-menu">
+              <Link to="/shop">Shop</Link>
+              <Link to="about">About Us</Link>
+              <Link to="contactus">Contact</Link>
+              <Link to="location">Location</Link>
+            </div>
+          )}
+          <div className="nav-main-responsive">
+            <button onClick={() => setMenuOpened(!menuOpened)}>
+              {menuOpened ? (
+                <span className="material-symbols-outlined">close</span>
+              ) : (
+                <span className="material-symbols-outlined">menu</span>
+              )}
+            </button>
+            <a href="#marquee">
+              <h3>Dass Coffee</h3>
+            </a>
+            <button
+              className="nav-main-responsive-shoppingBag"
               onClick={() => setCartOpen(!cartOpen)}
-              ref={shoppingBagRef}
             >
+              <span className="material-symbols-outlined" ref={shoppingBagRef}>
+                shopping_bag
+              </span>
+              <div>{totalItems > 0 && totalItems}</div>
+            </button>
+          </div>
+        </div>
+        <div className="nav-right">
+          <span className="material-symbols-outlined">search</span>
+          <span className="material-symbols-outlined">person</span>
+          <button
+            className="nav-right-shoppingBag"
+            onClick={() => setCartOpen(!cartOpen)}
+          >
+            <span className="material-symbols-outlined" ref={shoppingBagRef}>
               shopping_bag
             </span>
             <div>{totalItems > 0 && totalItems}</div>
-          </div>
+          </button>
         </div>
-      </div>
-      <div className="nav-right">
-        <span className="material-symbols-outlined">search</span>
-        <span className="material-symbols-outlined">person</span>
-        <div className="nav-right-shoppingBag">
-          <span
-            className="material-symbols-outlined"
-            onClick={() => setCartOpen(!cartOpen)}
-            ref={shoppingBagRef}
-          >
-            shopping_bag
-          </span>
-          <div>{totalItems > 0 && totalItems}</div>
-        </div>
-      </div>
-      {cartOpen && <Cart onClick={setCartOpen} />}
-    </nav>
+        {cartOpen && <Cart onClick={setCartOpen} />}
+      </nav>
+    </>
   );
 };

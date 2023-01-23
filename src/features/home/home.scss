@@ -9,6 +9,7 @@ main {
 .home--images {
   width: 100%;
   max-height: 80vh;
+
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -36,9 +37,11 @@ main {
   button {
     width: 14rem;
     height: 3rem;
+    padding: $padding;
     font-size: 2rem;
     background-color: $color-orange;
     border: none;
+    border-radius: $border-radius;
     position: absolute;
     bottom: 20%;
     left: calc(50% - 7rem);
@@ -652,7 +655,7 @@ footer {
           width: 8rem;
           height: 2.5rem;
           font-size: 1rem;
-          top: 30%;
+          top: 27%;
           left: calc(50% - 4rem);
         }
       }
@@ -662,11 +665,13 @@ footer {
     .artMeetsCoffee--grid {
       img {
         width: 90vw;
-        height: 80vw;
+        height: 90vw;
+        max-height: 50vh;
       }
       .artMeetsCoffee--grid-header {
         width: 90vw;
-        height: 80vw;
+        height: 90vw;
+        max-height: 50vh;
       }
       .h2meets {
         order: 3;

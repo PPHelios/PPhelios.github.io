@@ -1,52 +1,49 @@
-import { lazy, Suspense } from "react";
-import { Button } from "../../components/Button.jsx/Button";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./home.scss";
-import { Marquee } from "../../components/Marquee/Marquee";
-import { Navbar } from "../../components/NavBar/Navbar";
+import ArtMeetsCoffee from "./ArtMeetsCoffee";
+import SloganSection from "./SloganSection";
+import BestSellers from "./BestSellers";
+import AboutAndJoin from "./AboutAndJoin";
 
-const ArtMeetsCoffee = lazy(() => import("./ArtMeetsCoffee"));
-const SloganSection = lazy(() => import("./SloganSection"));
-const BestSellers = lazy(() => import("./BestSellers"));
-const AboutAndJoin = lazy(() => import("./AboutAndJoin"));
-const Footer = lazy(() => import("./Footer"));
 export const Home = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Marquee />
-        <Navbar />
-        <main>
-          <div className="home--images">
-            <div className="home--images-img1">
-              <img
-                src={require("../../assets/images/body1.webp")}
-                loading="lazy"
-                alt="artistic coffee package"
-              />
-            </div>
-            <div className="home--images-img2">
-              <img
-                src={require("../../assets/images/body2.webp")}
-                loading="lazy"
-                alt="artistic coffee package"
-              />
-              <Button text="Buy Now" />
-            </div>
-            <div className="home--images-img3">
-              <img
-                src={require("../../assets/images/shop1.webp")}
-                loading="lazy"
-                alt="artistic coffee package"
-              />
-            </div>
+      <main>
+        <div className="home--images">
+          <div className="home--images-img1">
+            <LazyLoadImage
+              src={require("../../assets/images/body1.webp")}
+              alt="artistic coffee package"
+            />
           </div>
-        </main>
+          <div className="home--images-img2">
+            <LazyLoadImage
+              src={require("../../assets/images/body2.webp")}
+              alt="artistic coffee package"
+            />
+            <button>Buy Now</button>
+          </div>
+          <div className="home--images-img3">
+            <LazyLoadImage
+              src={require("../../assets/images/shop1.webp")}
+              alt="artistic coffee package"
+            />
+          </div>
+        </div>
+      </main>
+      <LazyLoadComponent>
         <ArtMeetsCoffee />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
         <SloganSection />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
         <BestSellers />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
         <AboutAndJoin />
-        <Footer />
-      </Suspense>
+      </LazyLoadComponent>
     </>
   );
 };

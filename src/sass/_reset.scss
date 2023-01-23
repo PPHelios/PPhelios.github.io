@@ -21,6 +21,10 @@ img {
   max-width: 100%;
 }
 button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: $border-radius;
   font-family: $font-sec;
   cursor: pointer;
 }
