@@ -59,8 +59,12 @@ export const Navbar = () => {
         <div className="nav-main">
           {(menuOpened || !isNarrowScreen) && (
             <div className="nav-main-menu">
-              <Link to="/shop">Shop</Link>
-              <Link to="about">About Us</Link>
+              <Link onClick={() => setCartOpen(!cartOpen)} to="/shop">
+                Shop
+              </Link>
+              <Link onClick={() => setCartOpen(!cartOpen)} to="about">
+                About Us
+              </Link>
               <svg
                 fill="none"
                 height="31"
@@ -93,8 +97,12 @@ export const Navbar = () => {
                   fill="#000"
                 ></path>
               </svg>
-              <Link to="contactus">Contact</Link>
-              <Link to="location">Location</Link>
+              <Link onClick={() => setCartOpen(!cartOpen)} to="contactus">
+                Contact
+              </Link>
+              <Link onClick={() => setCartOpen(!cartOpen)} to="location">
+                Location
+              </Link>
             </div>
           )}
           <div className="nav-main-responsive">

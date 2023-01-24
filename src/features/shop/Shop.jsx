@@ -7,7 +7,7 @@ export default function Shop() {
     <>
       <main className="shop--container">
         <div className="shop--header">
-          <h2>Grab your goods</h2>
+          <h2>Grab your goods!</h2>
           <svg
             class="rainbow"
             width="137"
