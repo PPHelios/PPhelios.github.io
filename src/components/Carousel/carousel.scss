@@ -3,10 +3,11 @@
 .sliderContainer {
   width: 90vw;
   min-width: 185px;
-  margin-inline: auto;
   height: max-content;
+  margin-inline: auto;
+  position: relative;
+  z-index: 10;
   overflow: visible;
-
   .slick-slider {
     text-align: center;
     .slick-prev {
