@@ -59,10 +59,10 @@ export const Navbar = () => {
         <div className="nav-main">
           {(menuOpened || !isNarrowScreen) && (
             <div className="nav-main-menu">
-              <Link onClick={() => setCartOpen(!cartOpen)} to="/shop">
+              <Link onClick={() => setMenuOpened(false)} to="/shop">
                 Shop
               </Link>
-              <Link onClick={() => setCartOpen(!cartOpen)} to="about">
+              <Link onClick={() => setMenuOpened(false)} to="about">
                 About Us
               </Link>
               <svg
@@ -97,10 +97,10 @@ export const Navbar = () => {
                   fill="#000"
                 ></path>
               </svg>
-              <Link onClick={() => setCartOpen(!cartOpen)} to="contactus">
+              <Link onClick={() => setMenuOpened(false)} to="contactus">
                 Contact
               </Link>
-              <Link onClick={() => setCartOpen(!cartOpen)} to="location">
+              <Link onClick={() => setMenuOpened(false)} to="location">
                 Location
               </Link>
             </div>
@@ -118,7 +118,7 @@ export const Navbar = () => {
             </Link>
             <button
               className="nav-main-responsive-shoppingBag"
-              onClick={() => setCartOpen(!cartOpen)}
+              onClick={() => setMenuOpened(false)}
             >
               <span className="material-symbols-outlined" ref={shoppingBagRef}>
                 shopping_bag
@@ -132,7 +132,7 @@ export const Navbar = () => {
           <span className="material-symbols-outlined">person</span>
           <button
             className="nav-right-shoppingBag"
-            onClick={() => setCartOpen(!cartOpen)}
+            onClick={() => setMenuOpened(false)}
           >
             <span className="material-symbols-outlined" ref={shoppingBagRef}>
               shopping_bag
