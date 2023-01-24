@@ -1,15 +1,8 @@
 {
   "files": {
-    "main.css": "/dass-coffee/static/css/main.29697b3e.css",
-    "main.js": "/dass-coffee/static/js/main.5c867dcd.js",
-    "static/js/213.4d39e4fc.chunk.js": "/dass-coffee/static/js/213.4d39e4fc.chunk.js",
-    "static/js/782.66f69808.chunk.js": "/dass-coffee/static/js/782.66f69808.chunk.js",
-    "static/css/679.a548f0e2.chunk.css": "/dass-coffee/static/css/679.a548f0e2.chunk.css",
-    "static/js/679.edb1d882.chunk.js": "/dass-coffee/static/js/679.edb1d882.chunk.js",
-    "static/js/442.3a918237.chunk.js": "/dass-coffee/static/js/442.3a918237.chunk.js",
-    "static/js/351.8d25b05e.chunk.js": "/dass-coffee/static/js/351.8d25b05e.chunk.js",
+    "main.css": "/dass-coffee/static/css/main.3ecb5531.css",
+    "main.js": "/dass-coffee/static/js/main.c21493c7.js",
     "static/js/787.7b63f85e.chunk.js": "/dass-coffee/static/js/787.7b63f85e.chunk.js",
-    "static/js/717.c6e836b2.chunk.js": "/dass-coffee/static/js/717.c6e836b2.chunk.js",
     "static/media/bokeh.webp": "/dass-coffee/static/media/bokeh.ddd686f77229679b5cbf.webp",
     "static/media/shop3.webp": "/dass-coffee/static/media/shop3.f10e4ccc14a12c8f9a9a.webp",
     "static/media/shop6.webp": "/dass-coffee/static/media/shop6.ab0ea3fb4269ca99d9ff.webp",
@@ -19,6 +12,7 @@
     "static/media/header.webp": "/dass-coffee/static/media/header.6fce2a6742e820784dcc.webp",
     "static/media/slogan2.webp": "/dass-coffee/static/media/slogan2.d7b9e9e636ee747d472b.webp",
     "static/media/shop2.webp": "/dass-coffee/static/media/shop2.70a2206dd75b44f56b09.webp",
+    "static/media/blackAndWhite.jpg": "/dass-coffee/static/media/blackAndWhite.33a69fd22ac741fd9f84.jpg",
     "static/media/coffee.webp": "/dass-coffee/static/media/coffee.f14cbe23e60a305c7354.webp",
     "static/media/h2meets.webp": "/dass-coffee/static/media/h2meets.771e05d54700756e645b.webp",
     "static/media/tree.webp": "/dass-coffee/static/media/tree.25ab6fa35a93084e208f.webp",
@@ -38,6 +32,7 @@
     "static/media/isolated-cola-splash-white-background-3d-illustration-3d-rendering_158469-204.webp": "/dass-coffee/static/media/isolated-cola-splash-white-background-3d-illustration-3d-rendering_158469-204.2070de30f53cec6b63ba.webp",
     "static/media/shop5.webp": "/dass-coffee/static/media/shop5.4220b7ee7ba773d05964.webp",
     "static/media/coffee-for-every-one.webp": "/dass-coffee/static/media/coffee-for-every-one.9dfdc84832f005f48af8.webp",
+    "static/media/coffee-jar.jpeg": "/dass-coffee/static/media/coffee-jar.1b2533d7eb4e69285f14.jpeg",
     "static/media/body4.webp": "/dass-coffee/static/media/body4.dfa4138a3e881c5b9c5e.webp",
     "static/media/coffee2.webp": "/dass-coffee/static/media/coffee2.3368f651ff0135e0d19b.webp",
     "static/media/body5.webp": "/dass-coffee/static/media/body5.a9cd87d118b306b5e9a4.webp",
@@ -51,19 +46,12 @@
     "index.html": "/dass-coffee/index.html",
     "static/media/smile.webp": "/dass-coffee/static/media/smile.d888d91511ba92826903.webp",
     "static/media/smdg.webp": "/dass-coffee/static/media/smdg.43398b174759653a67f7.webp",
-    "main.29697b3e.css.map": "/dass-coffee/static/css/main.29697b3e.css.map",
-    "main.5c867dcd.js.map": "/dass-coffee/static/js/main.5c867dcd.js.map",
-    "213.4d39e4fc.chunk.js.map": "/dass-coffee/static/js/213.4d39e4fc.chunk.js.map",
-    "782.66f69808.chunk.js.map": "/dass-coffee/static/js/782.66f69808.chunk.js.map",
-    "679.a548f0e2.chunk.css.map": "/dass-coffee/static/css/679.a548f0e2.chunk.css.map",
-    "679.edb1d882.chunk.js.map": "/dass-coffee/static/js/679.edb1d882.chunk.js.map",
-    "442.3a918237.chunk.js.map": "/dass-coffee/static/js/442.3a918237.chunk.js.map",
-    "351.8d25b05e.chunk.js.map": "/dass-coffee/static/js/351.8d25b05e.chunk.js.map",
-    "787.7b63f85e.chunk.js.map": "/dass-coffee/static/js/787.7b63f85e.chunk.js.map",
-    "717.c6e836b2.chunk.js.map": "/dass-coffee/static/js/717.c6e836b2.chunk.js.map"
+    "main.3ecb5531.css.map": "/dass-coffee/static/css/main.3ecb5531.css.map",
+    "main.c21493c7.js.map": "/dass-coffee/static/js/main.c21493c7.js.map",
+    "787.7b63f85e.chunk.js.map": "/dass-coffee/static/js/787.7b63f85e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29697b3e.css",
-    "static/js/main.5c867dcd.js"
+    "static/css/main.3ecb5531.css",
+    "static/js/main.c21493c7.js"
   ]
 }
