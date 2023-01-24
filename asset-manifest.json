@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dass-coffee/static/css/main.3ecb5531.css",
-    "main.js": "/dass-coffee/static/js/main.2a438a53.js",
+    "main.js": "/dass-coffee/static/js/main.1927f2a5.js",
     "static/js/787.7b63f85e.chunk.js": "/dass-coffee/static/js/787.7b63f85e.chunk.js",
     "static/media/bokeh.webp": "/dass-coffee/static/media/bokeh.ddd686f77229679b5cbf.webp",
     "static/media/shop3.webp": "/dass-coffee/static/media/shop3.f10e4ccc14a12c8f9a9a.webp",
@@ -47,11 +47,11 @@
     "static/media/smile.webp": "/dass-coffee/static/media/smile.d888d91511ba92826903.webp",
     "static/media/smdg.webp": "/dass-coffee/static/media/smdg.43398b174759653a67f7.webp",
     "main.3ecb5531.css.map": "/dass-coffee/static/css/main.3ecb5531.css.map",
-    "main.2a438a53.js.map": "/dass-coffee/static/js/main.2a438a53.js.map",
+    "main.1927f2a5.js.map": "/dass-coffee/static/js/main.1927f2a5.js.map",
     "787.7b63f85e.chunk.js.map": "/dass-coffee/static/js/787.7b63f85e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ecb5531.css",
-    "static/js/main.2a438a53.js"
+    "static/js/main.1927f2a5.js"
   ]
 }
