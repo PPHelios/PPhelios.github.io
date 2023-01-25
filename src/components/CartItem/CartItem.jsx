@@ -15,9 +15,9 @@ export default function CartItem({ item }) {
       <div className="cartItem--item-data">
         <div className="cartItem--item-data-name">{item.name}</div>
         <div className="cartItem--item-data-quantity">
-          <button onClick={() => increaseCartItem(item.id)}>+</button>
-          <div>{item.quantity}</div>
           <button onClick={() => decreaseCartItem(item.id)}>-</button>
+          <div>{item.quantity}</div>
+          <button onClick={() => increaseCartItem(item.id)}>+</button>
         </div>
       </div>
       <div className="cartItem--item-price">

@@ -11,6 +11,7 @@ import Location from "./features/location/Location";
 import Shop from "./features/shop/Shop";
 import Layout from "./features/layout/Layout";
 import CartPage from "./features/cartPage/CartPage";
+import { NoPageFound } from "./features/noPageFound/NoPageFound";
 
 function App() {
   const router = createBrowserRouter(
@@ -23,6 +24,7 @@ function App() {
           <Route path="/contactus" element={<Contact />} />
           <Route path="/location" element={<Location />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<NoPageFound />} />
         </Route>
       </>
     )

@@ -1,6 +1,7 @@
 import "./cart.scss";
 import { useCartStore } from "../../store/store";
 import CartItem from "../CartItem/CartItem";
+import { Link } from "react-router-dom";
 export default function Cart({ onClick }) {
   const cartItems = useCartStore((state) => state.cart);
   const totalItems = useCartStore((state) => state.cartTotalItems());
@@ -44,8 +45,12 @@ export default function Cart({ onClick }) {
         )}
         {cartItems.length > 0 && (
           <div className="cart--btns">
-            <button>Continue Shopping</button>
-            <button>Proceed to Checkout</button>
+            <button onClick={() => onClick(false)}>Continue Shopping</button>
+            <Link to="/cart">
+              <button onClick={() => onClick(false)}>
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         )}
       </div>

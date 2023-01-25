@@ -12,6 +12,7 @@ export const Navbar = () => {
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const navRef = useRef(null);
   const shoppingBagRef = useRef(null);
+  const shoppingBagRef2 = useRef(null);
   useEffect(() => {
     // set initial value
     const mediaWatcher = window.matchMedia("(max-width: 667px)");
@@ -43,8 +44,10 @@ export const Navbar = () => {
   useEffect(() => {
     if (totalItems > 0) {
       shoppingBagRef.current.style.color = `#ff5b19`;
+      shoppingBagRef2.current.style.color = `#ff5b19`;
     } else {
       shoppingBagRef.current.style.color = `#fff`;
+      shoppingBagRef2.current.style.color = `#ff5b19`;
     }
   }, [totalItems]);
   return (
@@ -118,9 +121,9 @@ export const Navbar = () => {
             </Link>
             <button
               className="nav-main-responsive-shoppingBag"
-              onClick={() => setMenuOpened(false)}
+              onClick={() => setCartOpen(!cartOpen)}
             >
-              <span className="material-symbols-outlined" ref={shoppingBagRef}>
+              <span className="material-symbols-outlined" ref={shoppingBagRef2}>
                 shopping_bag
               </span>
               <div>{totalItems > 0 && totalItems}</div>
@@ -132,7 +135,7 @@ export const Navbar = () => {
           <span className="material-symbols-outlined">person</span>
           <button
             className="nav-right-shoppingBag"
-            onClick={() => setMenuOpened(false)}
+            onClick={() => setCartOpen(!cartOpen)}
           >
             <span className="material-symbols-outlined" ref={shoppingBagRef}>
               shopping_bag

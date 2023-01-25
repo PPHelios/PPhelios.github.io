@@ -9,7 +9,7 @@ import AboutAndJoin from "./AboutAndJoin";
 export const Home = () => {
   return (
     <>
-      <main>
+      <main className="main">
         <div className="home--images">
           <div className="home--images-img1">
             <LazyLoadImage

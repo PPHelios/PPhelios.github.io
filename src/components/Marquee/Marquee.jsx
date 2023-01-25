@@ -3,7 +3,11 @@ export const Marquee = () => {
   return (
     <div className="marquee" id="marquee">
       <div className="marquee--content">
-        <img src={require("../../assets/images/smile.webp")} alt="smiley" />
+        <img
+          className="smiley"
+          src={require("../../assets/images/smile.webp")}
+          alt="smiley"
+        />
         <h4>subscreibe and save</h4>
         <img src={require("../../assets/images/smdg.webp")} alt="smdg" />
         <h4>free shipping over 50$</h4>
@@ -11,7 +15,11 @@ export const Marquee = () => {
         <h4>new items in shop</h4>
       </div>
       <div className="marquee--content">
-        <img src={require("../../assets/images/smile.webp")} alt="smiley" />
+        <img
+          className="smiley"
+          src={require("../../assets/images/smile.webp")}
+          alt="smiley"
+        />
         <h4>subscreibe and save</h4>
         <img src={require("../../assets/images/smdg.webp")} alt="smdg" />
         <h4>free shipping over 50$</h4>

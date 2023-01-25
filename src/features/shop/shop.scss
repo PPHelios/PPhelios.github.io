@@ -1,26 +1,31 @@
 @import "../../sass/variables";
 .shop--container {
-  padding-top: 20px;
+  margin-top: 0;
+  padding-top: 70px;
+  background-color: $color-plum;
   .shop--header {
     position: relative;
-    @include flexCenter;
     h2 {
       font-size: 3rem;
       text-align: center;
     }
     svg {
       position: absolute;
-      top: 0;
+      bottom: -17px;
       right: 4%;
     }
   }
 
   .shopItems--container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+    padding: 1rem 0;
+    background-color: $color-light-blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     .carouselItem {
+      width: 32vw;
       padding: 1rem;
+      border-radius: $border-radius;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -50,7 +55,6 @@
         .carouselItem--img-price {
           width: 3rem;
           height: 3rem;
-          margin-left: 75%;
           text-decoration: line-through;
           text-decoration-color: red;
           background-color: $color-yellow;
@@ -58,8 +62,7 @@
           @include flexCenter;
           position: absolute;
           bottom: 12%;
-          right: 0;
-          transform: translate(-5%, -5%);
+          right: 1%;
           transition: transform 1s ease-out;
         }
         h5 {
@@ -95,6 +98,13 @@
 }
 @media screen and (max-width: 825px) {
   .shop--container {
+    .shop--header {
+      svg {
+        bottom: -70px;
+        right: 1%;
+        z-index: 2000;
+      }
+    }
     .shopItems--container {
       grid-template-columns: 1fr 1fr;
       .carouselItem {
@@ -129,6 +139,11 @@
   .shop--container {
     .shopItems--container {
       .carouselItem {
+        .carouselItem--img {
+          img {
+            height: 25vh;
+          }
+        }
       }
     }
   }
