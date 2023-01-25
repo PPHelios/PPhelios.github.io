@@ -46,7 +46,7 @@ export default function Cart({ onClick }) {
         {cartItems.length > 0 && (
           <div className="cart--btns">
             <button onClick={() => onClick(false)}>Continue Shopping</button>
-            <Link to="/cart">
+            <Link to="dass-coffee/cart">
               <button onClick={() => onClick(false)}>
                 Proceed to Checkout
               </button>

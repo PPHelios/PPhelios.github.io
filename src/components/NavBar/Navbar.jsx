@@ -34,6 +34,7 @@ export const Navbar = () => {
         navRef.current.style.top = "10px";
       }
     }
+
     window.addEventListener("scroll", handleNavigation);
     // clean up after ourselves
     return function cleanup() {
@@ -47,9 +48,18 @@ export const Navbar = () => {
       shoppingBagRef2.current.style.color = `#ff5b19`;
     } else {
       shoppingBagRef.current.style.color = `#fff`;
-      shoppingBagRef2.current.style.color = `#ff5b19`;
+      shoppingBagRef2.current.style.color = `#fff`;
     }
   }, [totalItems]);
+
+  const handleOpenMenu = () => {
+    setCartOpen(false);
+    setMenuOpened(!menuOpened);
+  };
+  const handleOpenCart = () => {
+    setCartOpen(!cartOpen);
+    setMenuOpened(false);
+  };
   return (
     <>
       <nav ref={navRef}>
@@ -62,10 +72,10 @@ export const Navbar = () => {
         <div className="nav-main">
           {(menuOpened || !isNarrowScreen) && (
             <div className="nav-main-menu">
-              <Link onClick={() => setMenuOpened(false)} to="/shop">
+              <Link onClick={() => setMenuOpened(false)} to="dass-coffee/shop">
                 Shop
               </Link>
-              <Link onClick={() => setMenuOpened(false)} to="about">
+              <Link onClick={() => setMenuOpened(false)} to="dass-coffee/about">
                 About Us
               </Link>
               <svg
@@ -100,16 +110,22 @@ export const Navbar = () => {
                   fill="#000"
                 ></path>
               </svg>
-              <Link onClick={() => setMenuOpened(false)} to="contactus">
+              <Link
+                onClick={() => setMenuOpened(false)}
+                to="dass-coffee/contactus"
+              >
                 Contact
               </Link>
-              <Link onClick={() => setMenuOpened(false)} to="location">
+              <Link
+                onClick={() => setMenuOpened(false)}
+                to="dass-coffee/location"
+              >
                 Location
               </Link>
             </div>
           )}
           <div className="nav-main-responsive">
-            <button onClick={() => setMenuOpened(!menuOpened)}>
+            <button onClick={() => handleOpenMenu()}>
               {menuOpened ? (
                 <span className="material-symbols-outlined">close</span>
               ) : (
@@ -121,7 +137,7 @@ export const Navbar = () => {
             </Link>
             <button
               className="nav-main-responsive-shoppingBag"
-              onClick={() => setCartOpen(!cartOpen)}
+              onClick={() => handleOpenCart()}
             >
               <span className="material-symbols-outlined" ref={shoppingBagRef2}>
                 shopping_bag
@@ -135,7 +151,7 @@ export const Navbar = () => {
           <span className="material-symbols-outlined">person</span>
           <button
             className="nav-right-shoppingBag"
-            onClick={() => setCartOpen(!cartOpen)}
+            onClick={() => handleOpenCart()}
           >
             <span className="material-symbols-outlined" ref={shoppingBagRef}>
               shopping_bag

@@ -19,11 +19,11 @@ function App() {
       <>
         <Route path="/" element={<Layout />}>
           <Route path="dass-coffee/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactus" element={<Contact />} />
-          <Route path="/location" element={<Location />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="dass-coffee/shop" element={<Shop />} />
+          <Route path="dass-coffee/about" element={<About />} />
+          <Route path="dass-coffee/contactus" element={<Contact />} />
+          <Route path="dass-coffee/location" element={<Location />} />
+          <Route path="dass-coffee/cart" element={<CartPage />} />
           <Route path="*" element={<NoPageFound />} />
         </Route>
       </>
