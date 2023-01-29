@@ -1,5 +1,8 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./about.scss";
+import bokeh380 from "../../assets/images/bokeh_rgkwyp_c_scale,w_380.webp";
+import bokeh974 from "../../assets/images/bokeh_rgkwyp_c_scale,w_974.webp";
+import bokeh1380 from "../../assets/images/bokeh_rgkwyp_c_scale,w_1380.webp";
 
 export default function About() {
   return (
@@ -43,10 +46,19 @@ export default function About() {
             and get right to the good part - ridiculously delicious coffee you
             can prepare however you like.
           </article>
-          <LazyLoadImage
-            src={require("../../assets/images/bokeh.webp")}
-            alt="a beautiful bokeh of coffee"
-          />
+          <picture>
+            <img
+              sizes="30vw,
+              (max-width: 835) 40vw,
+              (max-width: 665px) 50vw"
+              srcset={`${bokeh380} 380w,
+${bokeh974} 974w,
+${bokeh1380} 1380w`}
+              src={`${bokeh1380}`}
+              alt=""
+              loading="lazy"
+            />
+          </picture>
         </div>
         <div className="about--article-bottom">
           <LazyLoadImage

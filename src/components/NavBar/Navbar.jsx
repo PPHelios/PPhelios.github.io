@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import { useCartStore } from "../../store/store";
 import "./navBar.scss";
-
+import { ReactComponent as Close } from "../../assets/images/close.svg";
+import { ReactComponent as Menu } from "../../assets/images/menu.svg";
+import { ReactComponent as Person } from "../../assets/images/person.svg";
+import { ReactComponent as Search } from "../../assets/images/search.svg";
 export const Navbar = () => {
   const totalItems = useCartStore((state) => state.cartTotalItems());
   const [menuOpened, setMenuOpened] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const navRef = useRef(null);
-  const shoppingBagRef = useRef(null);
-  const shoppingBagRef2 = useRef(null);
+  const [fill, setFill] = useState(`#fff`);
   useEffect(() => {
     // set initial value
     const mediaWatcher = window.matchMedia("(max-width: 667px)");
@@ -44,13 +46,11 @@ export const Navbar = () => {
   });
   useEffect(() => {
     if (totalItems > 0) {
-      shoppingBagRef.current.style.color = `#ff5b19`;
-      shoppingBagRef2.current.style.color = `#ff5b19`;
+      setFill(`#ff5b19`);
     } else {
-      shoppingBagRef.current.style.color = `#fff`;
-      shoppingBagRef2.current.style.color = `#fff`;
+      setFill(`#fff`);
     }
-  }, [totalItems]);
+  }, [totalItems, fill]);
 
   const handleOpenMenu = () => {
     setCartOpen(false);
@@ -125,12 +125,11 @@ export const Navbar = () => {
             </div>
           )}
           <div className="nav-main-responsive">
-            <button onClick={() => handleOpenMenu()}>
-              {menuOpened ? (
-                <span className="material-symbols-outlined">close</span>
-              ) : (
-                <span className="material-symbols-outlined">menu</span>
-              )}
+            <button
+              onClick={() => handleOpenMenu()}
+              aria-label={menuOpened ? "close" : "menu"}
+            >
+              {menuOpened ? <Close /> : <Menu />}
             </button>
             <Link to="dass-coffee/">
               <h3>Dass Coffee</h3>
@@ -138,24 +137,33 @@ export const Navbar = () => {
             <button
               className="nav-main-responsive-shoppingBag"
               onClick={() => handleOpenCart()}
+              aria-label="shopping bag"
             >
-              <span className="material-symbols-outlined" ref={shoppingBagRef2}>
-                shopping_bag
-              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                <path
+                  d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm7-23q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q17.35 21 18 21Zm1.5-9h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM30 21q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q29.35 21 30 21Z"
+                  fill={fill}
+                />
+              </svg>
+
               <div>{totalItems > 0 && totalItems}</div>
             </button>
           </div>
         </div>
         <div className="nav-right">
-          <span className="material-symbols-outlined">search</span>
-          <span className="material-symbols-outlined">person</span>
+          <Search />
+          <Person />
+
           <button
             className="nav-right-shoppingBag"
             onClick={() => handleOpenCart()}
           >
-            <span className="material-symbols-outlined" ref={shoppingBagRef}>
-              shopping_bag
-            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+              <path
+                d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm7-23q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q17.35 21 18 21Zm1.5-9h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM30 21q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q29.35 21 30 21Z"
+                fill={fill}
+              />
+            </svg>
             <div>{totalItems > 0 && totalItems}</div>
           </button>
         </div>

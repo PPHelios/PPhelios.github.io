@@ -34,7 +34,7 @@
     animation-direction: normal;
     overflow-x: hidden;
     h4 {
-      font-size: $var-sizeS;
+      font-size: clamp(12px, $var-sizeS, 1.2rem);
       letter-spacing: 1px;
       font-family: $font-sec;
       overflow-x: hidden;

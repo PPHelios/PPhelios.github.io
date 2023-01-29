@@ -39,6 +39,54 @@ export default function CartPage() {
               <button>Proceed To Payment</button>
             </div>
           )}
+          <section className="coffeeMachine">
+            <div class="container">
+              <div class="coffee-header">
+                <div class="coffee-header__buttons coffee-header__button-one"></div>
+                <div class="coffee-header__buttons coffee-header__button-two"></div>
+                <div class="coffee-header__display"></div>
+                <div class="coffee-header__details"></div>
+              </div>
+              <div class="coffee-medium">
+                <div class="coffe-medium__exit"></div>
+                <div class="coffee-medium__arm"></div>
+                <div class="coffee-medium__liquid"></div>
+                <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+                <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+                <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+                <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+                <div class="coffee-medium__cup"></div>
+              </div>
+              <div class="coffee-footer"></div>
+            </div>
+          </section>
+          <section className="hotCup">
+            <div className="container">
+              <div class="steam" id="steam1">
+                {" "}
+              </div>
+              <div class="steam" id="steam2">
+                {" "}
+              </div>
+              <div class="steam" id="steam3">
+                {" "}
+              </div>
+              <div class="steam" id="steam4">
+                {" "}
+              </div>
+
+              <div id="cup">
+                <div id="cup-body">
+                  <div id="cup-shade"></div>
+                </div>
+                <div id="cup-handle"></div>
+              </div>
+
+              <div id="saucer"></div>
+
+              <div id="shadow"></div>
+            </div>
+          </section>
         </aside>
       </div>
     </>
