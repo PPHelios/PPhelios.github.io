@@ -12,7 +12,11 @@ import Shop from "./features/shop/Shop";
 import Layout from "./features/layout/Layout";
 import CartPage from "./features/cartPage/CartPage";
 import { NoPageFound } from "./features/noPageFound/NoPageFound";
-
+import Authenticate from "./features/authentication/LoginPage";
+import {ProtectedRoutes} from "./features/authentication/ProtectedRoutes";
+import AdminPanel from "./features/adminPanel/AdminPanel";
+import LoginPage from "./features/authentication/LoginPage";
+import SignupPage from "./features/authentication/SignupPage";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +28,17 @@ function App() {
           <Route path="dass-coffee/contactus" element={<Contact />} />
           <Route path="dass-coffee/location" element={<Location />} />
           <Route path="dass-coffee/cart" element={<CartPage />} />
+          <Route
+            path="dass-coffee/AdminPanel"
+            element={
+              <ProtectedRoutes>
+                <AdminPanel />
+              </ProtectedRoutes>
+            }
+          />
+          <Route path="dass-coffee/login" element={<LoginPage/>} />
+          <Route path="dass-coffee/signup" element={<SignupPage/>} />
+          {/* <ProtectedRoutes path="dass-coffee/auth" component={AdminPanel} /> */}
           <Route path="*" element={<NoPageFound />} />
         </Route>
       </>

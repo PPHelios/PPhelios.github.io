@@ -17,7 +17,6 @@ export default function Contact() {
     e.preventDefault();
     setFormData(initialState);
   };
-  console.log(formData);
   return (
     <main className="contact--container">
       <div className="reachToUs">
@@ -71,8 +70,8 @@ export default function Contact() {
             onChange={handleFormChange}
             required
           />
-          <button onClick={handleSubmit}>SUBMIT</button>
         </label>
+        <button onClick={handleSubmit}>SUBMIT</button>
       </form>
     </main>
   );

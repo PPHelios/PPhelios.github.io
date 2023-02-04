@@ -152,7 +152,8 @@ export const Navbar = () => {
         </div>
         <div className="nav-right">
           <Search />
-          <Person />
+          <Link to="dass-coffee/signup"> <Person /></Link>
+         
 
           <button
             className="nav-right-shoppingBag"

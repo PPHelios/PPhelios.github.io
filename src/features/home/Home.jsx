@@ -10,7 +10,6 @@ export const Home = () => {
   return (
     <>
       <main className="main">
-        <h1>top</h1>
         <div className="home--images">
           <div className="home--images-img1">
             <LazyLoadImage
@@ -39,7 +38,6 @@ export const Home = () => {
             />
           </div>
         </div>
-        <h1>bot</h1>
       </main>
 
       <LazyLoadComponent>

@@ -14,7 +14,7 @@ export default function AboutAndJoin() {
           className="aboutAndJoin--about-coffeeForEveryOne"
           src={require("../../assets/images/coffee-for-every-one.webp")}
           loading="lazy"
-          alt="coffee for every one image"
+          alt="coffee for every one"
         />
         <img
           className="aboutAndJoin--about-coffeeCup"

@@ -3,6 +3,17 @@ import produce from "immer";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
+  loggedIn:false,
+  login:()=> set(
+    produce((state) => {
+      state.loggedIn = true;
+    })
+  ),
+  logout:()=> set(
+    produce((state) => {
+      state.loggedIn = false;
+    })
+  ),
   addItemToCart: (e) => {
     const cartItems = get().cart;
     const existingCartItem = cartItems.findIndex((item) => item.id === e.id);
