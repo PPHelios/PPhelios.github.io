@@ -3,15 +3,15 @@ import produce from "immer";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
-  loggedIn:false,
-  login:()=> set(
+  loggedIn:{},
+  login:(token)=> set(
     produce((state) => {
-      state.loggedIn = true;
+      state.loggedIn = {...get().loggedIn,token};
     })
   ),
   logout:()=> set(
     produce((state) => {
-      state.loggedIn = false;
+      state.loggedIn = {};
     })
   ),
   addItemToCart: (e) => {

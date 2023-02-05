@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import useAuthenticate from "./authenticator";
-
+// import useAuthenticate from "./authenticator";
+import { useCartStore } from "../../store/store";
 
 const initialState = {
   email: "",
@@ -9,7 +9,13 @@ const initialState = {
 };
 export default function LoginPage() {
   const [formData, setFormData] = useState(initialState);
-  const login = useAuthenticate().authLogin
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+  // const login = useAuthenticate().authLogin
+const login = useCartStore((state) => state.login)
+const logout = useCartStore((state) => state.logout)
+const token = useCartStore((state) => state.loggedIn)
+const  buttonText = isSubmitting ? "Signing In" : "Sign In"
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,12 +23,62 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     login(formData)
-    setFormData(initialState);
+     const genericErrorMessage = "Something went wrong! Please try again later."
+    setIsSubmitting(true)
+    setError("")
+
+    fetch("http://localhost:8081/users/login", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: formData.email, password:formData.password }),
+    })
+      .then(async response => {
+        setIsSubmitting(false)
+        if (!response.ok) {
+          if (response.status === 400) {
+            setError("Please fill all the fields correctly!")
+          } else if (response.status === 401) {
+            setError("Invalid email and password combination.")
+          } else {
+            setError(genericErrorMessage)
+          }
+        } else {
+          const data = await response.json()
+          console.log(data)
+          login(data.token)
+        }
+      })
+      .catch(error => {
+        setIsSubmitting(false)
+        setError(error)
+      })
+    // setFormData(initialState);
   };
 
+  const verifyUser = useCallback(() => {
+    fetch("http://localhost:8081/users/refreshToken", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    }).then(async response => {
+      if (response.ok) {
+        const data = await response.json()
+        login(data.token)
+      } else {
+        login(null)
+      }
+      // call refreshToken every 5 minutes to renew the authentication token.
+      setTimeout(verifyUser, 5 * 60 * 1000)
+    })
+  }, [login])
+
+  useEffect(() => {
+    verifyUser()
+  }, [verifyUser])
   return (
-    <main className="contact--container">
+    <>
+{token.token === null ?(<main className="contact--container">
       <div className="reachToUs">
         <p>Login</p>
       </div>
@@ -51,9 +107,14 @@ export default function LoginPage() {
             required
           />
         </label>
-          <button onClick={handleSubmit}>SUBMIT</button>
+          <button onClick={handleSubmit} disabled={isSubmitting}
+        >{buttonText}</button>
       </form>
+      {error && <h3>{error}</h3>}
   <p>Not Registered? <Link to="/dass-coffee/signup">sign Up</Link></p>
-    </main>
-  );
+  <button onClick={()=>logout()}>logout</button>
+    </main>):<h1>u r logged in</h1>}
+    </>
+  )
+  
 }
