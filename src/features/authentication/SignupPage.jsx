@@ -50,7 +50,7 @@ const  buttonText = isSubmitting ? "Registering" : "Register"
         } else {
           const data = await response.json()
           console.log(data)
-          login(data.token)
+          login({token:data.token})
         }
       })
       .catch(error => {
@@ -120,6 +120,7 @@ const  buttonText = isSubmitting ? "Registering" : "Register"
       {error && <h3>{error}</h3>}
   <p>Already a Member? <Link to="/dass-coffee/login">Login</Link></p>
       <button onClick={()=>logout()}>logout</button>
+      <Link to="/dass-coffee/user">user</Link>
     </main>
   );
 }

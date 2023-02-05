@@ -46,7 +46,7 @@ const  buttonText = isSubmitting ? "Signing In" : "Sign In"
         } else {
           const data = await response.json()
           console.log(data)
-          login(data.token)
+          login({token:data.token})
         }
       })
       .catch(error => {
@@ -64,7 +64,7 @@ const  buttonText = isSubmitting ? "Signing In" : "Sign In"
     }).then(async response => {
       if (response.ok) {
         const data = await response.json()
-        login(data.token)
+        login({token:data.token})
       } else {
         login(null)
       }
@@ -73,12 +73,12 @@ const  buttonText = isSubmitting ? "Signing In" : "Sign In"
     })
   }, [login])
 
-  useEffect(() => {
-    verifyUser()
-  }, [verifyUser])
+  // useEffect(() => {
+  //   verifyUser()
+  // }, [verifyUser])
   return (
     <>
-{token.token === null ?(<main className="contact--container">
+{token.token ? <h1>u r logged in</h1> : (<main className="contact--container">
       <div className="reachToUs">
         <p>Login</p>
       </div>
@@ -113,7 +113,8 @@ const  buttonText = isSubmitting ? "Signing In" : "Sign In"
       {error && <h3>{error}</h3>}
   <p>Not Registered? <Link to="/dass-coffee/signup">sign Up</Link></p>
   <button onClick={()=>logout()}>logout</button>
-    </main>):<h1>u r logged in</h1>}
+  
+    </main>)}
     </>
   )
   

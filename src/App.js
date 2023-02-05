@@ -17,6 +17,7 @@ import {ProtectedRoutes} from "./features/authentication/ProtectedRoutes";
 import AdminPanel from "./features/adminPanel/AdminPanel";
 import LoginPage from "./features/authentication/LoginPage";
 import SignupPage from "./features/authentication/SignupPage";
+import User from "./features/authentication/User";
 function App() {
 
 
@@ -40,6 +41,7 @@ function App() {
           />
           <Route path="dass-coffee/login" element={<LoginPage/>} />
           <Route path="dass-coffee/signup" element={<SignupPage/>} />
+          <Route path="dass-coffee/user" element={<User/>} />
           {/* <ProtectedRoutes path="dass-coffee/auth" component={AdminPanel} /> */}
           <Route path="*" element={<NoPageFound />} />
         </Route>

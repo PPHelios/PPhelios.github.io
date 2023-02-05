@@ -4,9 +4,9 @@ import produce from "immer";
 export const useCartStore = create((set, get) => ({
   cart: [],
   loggedIn:{},
-  login:(token)=> set(
+  login:(data)=> set(
     produce((state) => {
-      state.loggedIn = {...get().loggedIn,token};
+      state.loggedIn = {...get().loggedIn,...data};
     })
   ),
   logout:()=> set(
