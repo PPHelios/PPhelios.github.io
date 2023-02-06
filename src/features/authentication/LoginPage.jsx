@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-// import useAuthenticate from "./authenticator";
 import { useCartStore } from "../../store/store";
 
 const initialState = {
@@ -11,7 +10,6 @@ export default function LoginPage() {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
-  // const login = useAuthenticate().authLogin
 const login = useCartStore((state) => state.login)
 const logout = useCartStore((state) => state.logout)
 const token = useCartStore((state) => state.loggedIn)
@@ -63,9 +61,12 @@ const  buttonText = isSubmitting ? "Signing In" : "Sign In"
       headers: { "Content-Type": "application/json" },
     }).then(async response => {
       if (response.ok) {
+        console.log(response);
         const data = await response.json()
         login({token:data.token})
       } else {
+        console.log("null");
+        console.log(response);
         login(null)
       }
       // call refreshToken every 5 minutes to renew the authentication token.

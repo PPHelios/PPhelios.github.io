@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useCartStore } from "../../store/store";
 
@@ -19,6 +19,24 @@ const  buttonText = isSubmitting ? "Registering" : "Register"
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+
+/**
+   * Sync logout across tabs
+   */
+const syncLogout = useCallback(event => {
+  if (event.key === "logout") {
+    // If using react-router-dom, you may call history.push("/")
+    window.location.reload()
+  }
+}, [])
+
+useEffect(() => {
+  window.addEventListener("storage", syncLogout)
+  return () => {
+    window.removeEventListener("storage", syncLogout)
+  }
+}, [syncLogout])
 
   const handleSubmit = (e) => {
     e.preventDefault();

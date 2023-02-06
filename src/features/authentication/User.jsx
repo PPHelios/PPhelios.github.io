@@ -34,6 +34,7 @@ export default function User  () {
   useEffect(() => {
     // fetch only when user details are not present
     if (!token.details) {
+      console.log(token)
       fetchUserDetails()
     }
   }, [token.details, fetchUserDetails])

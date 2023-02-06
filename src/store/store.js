@@ -9,11 +9,22 @@ export const useCartStore = create((set, get) => ({
       state.loggedIn = {...get().loggedIn,...data};
     })
   ),
-  logout:()=> set(
+  logout:()=> {
+    fetch("http://localhost:8081/users/logout", {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${get().loggedIn.token}`,
+      },
+    }).then(async response => {
+      set(
     produce((state) => {
-      state.loggedIn = {};
+      state.loggedIn = {...get().loggedIn,details: undefined, token: null};
     })
-  ),
+  )
+      window.localStorage.setItem("logout", Date.now())
+    })
+    },
   addItemToCart: (e) => {
     const cartItems = get().cart;
     const existingCartItem = cartItems.findIndex((item) => item.id === e.id);

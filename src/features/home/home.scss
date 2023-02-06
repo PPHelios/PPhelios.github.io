@@ -17,8 +17,9 @@
   align-items: flex-start;
   padding: 0.5rem;
   overflow: hidden;
+  border: 1px solid red;
   img {
-    width: 31vw;
+    width: 30vw;
     object-fit: cover;
   }
 }
