@@ -1,16 +1,15 @@
 import "./cart.scss";
-import { useCartStore } from "../../store/store";
+import { useStore } from "../../store/useStore";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
 export default function Cart({ onClick }) {
-  const cartItems = useCartStore((state) => state.cart);
-  const loggedin = useCartStore((state) => state.loggedIn);
-  const totalItems = useCartStore((state) => state.cartTotalItems());
-  const totalItemsPrice = useCartStore((state) => state.cartTotalItemsPrice());
-  const cartBeforeDiscountTotalItemsPrice = useCartStore((state) =>
+  const cartItems = useStore((state) => state.cart);
+  const loggedin = useStore((state) => state.loggedIn);
+  const totalItems = useStore((state) => state.cartTotalItems());
+  const totalItemsPrice = useStore((state) => state.cartTotalItemsPrice());
+  const cartBeforeDiscountTotalItemsPrice = useStore((state) =>
     state.cartBeforeDiscountTotalItemsPrice()
   );
-  console.log(loggedin)
   return (
     <div className="cart--container">
       <div className="cart">
@@ -26,7 +25,7 @@ export default function Cart({ onClick }) {
 
         <div className="cart--cartItems">
           {cartItems.length > 0 ? (
-            cartItems.map((item) => <CartItem item={item} key={item.id} />)
+            cartItems.map((item) => <CartItem item={item} key={item._id} />)
           ) : (
             <h4>Your Cart Is Empty...</h4>
           )}

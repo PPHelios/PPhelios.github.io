@@ -1,9 +1,9 @@
 import "./cartItem.scss";
-import { useCartStore } from "../../store/store";
+import { useStore } from "../../store/useStore";
 export default function CartItem({ item }) {
-  const increaseCartItem = useCartStore((state) => state.increaseCartItem);
-  const decreaseCartItem = useCartStore((state) => state.decreaseCartItem);
-  const deleteCartItem = useCartStore((state) => state.deleteCartItem);
+  const increaseCartItem = useStore((state) => state.increaseCartItem);
+  const decreaseCartItem = useStore((state) => state.decreaseCartItem);
+  const deleteCartItem = useStore((state) => state.deleteCartItem);
   return (
     <div className="cartItem">
       <div className="cartItem--item-img">

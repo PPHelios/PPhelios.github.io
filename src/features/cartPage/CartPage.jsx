@@ -1,11 +1,11 @@
 import CartItem from "../../components/CartItem/CartItem";
-import { useCartStore } from "../../store/store";
+import { useStore } from "../../store/useStore";
 import "./cartPage.scss";
 export default function CartPage() {
-  const cartItems = useCartStore((state) => state.cart);
-  const totalItems = useCartStore((state) => state.cartTotalItems());
-  const totalItemsPrice = useCartStore((state) => state.cartTotalItemsPrice());
-  const cartBeforeDiscountTotalItemsPrice = useCartStore((state) =>
+  const cartItems = useStore((state) => state.cart);
+  const totalItems = useStore((state) => state.cartTotalItems());
+  const totalItemsPrice = useStore((state) => state.cartTotalItemsPrice());
+  const cartBeforeDiscountTotalItemsPrice = useStore((state) =>
     state.cartBeforeDiscountTotalItemsPrice()
   );
   return (
@@ -14,7 +14,7 @@ export default function CartPage() {
         <main className="cartPage--main">
           <div className="cart--cartItems">
             {cartItems.length > 0 ? (
-              cartItems.map((item) => <CartItem item={item} key={item.id} />)
+              cartItems.map((item) => <CartItem item={item} key={item._id} />)
             ) : (
               <h4>Your Cart Is Empty...</h4>
             )}
@@ -62,16 +62,16 @@ export default function CartPage() {
           </section>
           <section className="hotCup">
             <div className="container">
-              <div class="steam" id="steam1">
+              <div className="steam" id="steam1">
                 {" "}
               </div>
-              <div class="steam" id="steam2">
+              <div className="steam" id="steam2">
                 {" "}
               </div>
-              <div class="steam" id="steam3">
+              <div className="steam" id="steam3">
                 {" "}
               </div>
-              <div class="steam" id="steam4">
+              <div className="steam" id="steam4">
                 {" "}
               </div>
 

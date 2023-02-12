@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import "./carousel.scss";
 import Slider from "react-slick";
 import "./slick.css";
 import "./slick-theme.css";
-import { shopItems } from "../../shopItems";
-import { useCartStore } from "../../store/store";
+import { useStore } from "../../store/useStore";
 
 /* lazyLoad accepts 'ondemand', 'progressive', or 'anticipated' for lazy load technique.
 89
@@ -55,33 +55,41 @@ const settings = {
 };
 
 export const Carousel = () => {
-  const addItemToCart = useCartStore((state) => state.addItemToCart);
+  const addItemToCart = useStore((state) => state.addItemToCart);
+  const products = useStore((state) => state.products);
+  const getProducts = useStore((state) => state.getProducts);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <div className="sliderContainer">
       <Slider {...settings}>
-        {shopItems.map((item) => {
-          return (
-            <div className="carouselItem" key={item.id}>
-              <div className="carouselItem--img">
-                <img
-                  src={require("../../assets/images/" + item.img + ".webp")}
-                  alt={item.alt}
-                />
-                <div className="carouselItem--img-price">{item.price}$</div>
-                <h5>{item.name}</h5>
-              </div>
-
-              <div className="carouselItem--details">
-                <div className="carouselItem--details-description">
-                  <p>{item.description}</p>
+        {products.length > 0 &&
+          products.map((item) => {
+            return (
+              <div className="carouselItem" key={item._id}>
+                <div className="carouselItem--img">
+                  <img
+                    src={require("../../assets/images/" + item.img + ".webp")}
+                    alt={item.alt}
+                  />
+                  <div className="carouselItem--img-price">{item.price}$</div>
+                  <h5>{item.name}</h5>
                 </div>
+
+                <div className="carouselItem--details">
+                  <div className="carouselItem--details-description">
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+                <button onClick={() => addItemToCart(item)}>
+                  Add To Cart <span>{item.discountedPrice}$</span>
+                </button>
               </div>
-              <button onClick={() => addItemToCart(item)}>
-                Add To Cart <span>{item.discountedPrice}$</span>
-              </button>
-            </div>
-          );
-        })}
+            );
+          })}
       </Slider>
     </div>
   );

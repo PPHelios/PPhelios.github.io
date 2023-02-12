@@ -2,14 +2,14 @@ import { useRef } from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
-import { useCartStore } from "../../store/store";
+import { useStore } from "../../store/useStore";
 import "./navBar.scss";
 import { ReactComponent as Close } from "../../assets/images/close.svg";
 import { ReactComponent as Menu } from "../../assets/images/menu.svg";
 import { ReactComponent as Person } from "../../assets/images/person.svg";
 import { ReactComponent as Search } from "../../assets/images/search.svg";
 export const Navbar = () => {
-  const totalItems = useCartStore((state) => state.cartTotalItems());
+  const totalItems = useStore((state) => state.cartTotalItems());
   const [menuOpened, setMenuOpened] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -152,8 +152,10 @@ export const Navbar = () => {
         </div>
         <div className="nav-right">
           <Search />
-          <Link to="dass-coffee/signup"> <Person /></Link>
-         
+          <Link to="dass-coffee/signup">
+            {" "}
+            <Person />
+          </Link>
 
           <button
             className="nav-right-shoppingBag"

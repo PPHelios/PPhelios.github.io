@@ -1,30 +1,49 @@
-import { create } from "zustand";
 import produce from "immer";
 
-export const useCartStore = create((set, get) => ({
+export const userSlice = (set, get) => ({
   cart: [],
-  loggedIn:{},
-  login:(data)=> set(
-    produce((state) => {
-      state.loggedIn = {...get().loggedIn,...data};
-    })
-  ),
-  logout:()=> {
+  products: [],
+  loggedIn: {},
+  getProducts: async () => {
+    try {
+      const response = await fetch("http://localhost:8000/products");
+      if (!response.ok) {
+        console.log("error");
+      } else {
+        const products = await response.json();
+        console.log(products);
+        set((state) => ({ products }));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  login: (data) =>
+    set(
+      produce((state) => {
+        state.loggedIn = { ...get().loggedIn, ...data };
+      })
+    ),
+  logout: () => {
     fetch("http://localhost:8081/users/logout", {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${get().loggedIn.token}`,
       },
-    }).then(async response => {
+    }).then(async (response) => {
       set(
-    produce((state) => {
-      state.loggedIn = {...get().loggedIn,details: undefined, token: null};
-    })
-  )
-      window.localStorage.setItem("logout", Date.now())
-    })
-    },
+        produce((state) => {
+          state.loggedIn = {
+            ...get().loggedIn,
+            details: undefined,
+            token: null,
+          };
+        })
+      );
+      window.localStorage.setItem("logout", Date.now());
+    });
+  },
   addItemToCart: (e) => {
     const cartItems = get().cart;
     const existingCartItem = cartItems.findIndex((item) => item.id === e.id);
@@ -97,7 +116,7 @@ export const useCartStore = create((set, get) => ({
       0
     );
   },
-}));
+});
 
 // set((state) => ({ cart: newcart }))
 

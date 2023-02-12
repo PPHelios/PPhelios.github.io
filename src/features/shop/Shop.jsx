@@ -1,8 +1,14 @@
-import { shopItems } from "../../shopItems";
-import { useCartStore } from "../../store/store";
+import { useEffect } from "react";
+import { useStore } from "../../store/useStore";
 import "./shop.scss";
 export default function Shop() {
-  const addItemToCart = useCartStore((state) => state.addItemToCart);
+  const addItemToCart = useStore((state) => state.addItemToCart);
+  const products = useStore((state) => state.products);
+  const getProducts = useStore((state) => state.getProducts);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
     <>
       <main className="shop--container">
@@ -71,29 +77,30 @@ export default function Shop() {
         </div>
 
         <div className="shopItems--container">
-          {shopItems.map((item) => {
-            return (
-              <div className="carouselItem" key={item.id}>
-                <div className="carouselItem--img">
-                  <img
-                    src={require("../../assets/images/" + item.img + ".webp")}
-                    alt={item.alt}
-                  />
-                  <div className="carouselItem--img-price">{item.price}$</div>
-                  <h5>{item.name}</h5>
-                </div>
-
-                <div className="carouselItem--details">
-                  <div className="carouselItem--details-description">
-                    <p>{item.shortDescription}</p>
+          {products &&
+            products.map((item) => {
+              return (
+                <div className="carouselItem" key={item._id}>
+                  <div className="carouselItem--img">
+                    <img
+                      src={require("../../assets/images/" + item.img + ".webp")}
+                      alt={item.alt}
+                    />
+                    <div className="carouselItem--img-price">{item.price}$</div>
+                    <h5>{item.name}</h5>
                   </div>
+
+                  <div className="carouselItem--details">
+                    <div className="carouselItem--details-description">
+                      <p>{item.shortDescription}</p>
+                    </div>
+                  </div>
+                  <button onClick={() => addItemToCart(item)}>
+                    Add To Cart <span>{item.discountedPrice}$</span>
+                  </button>
                 </div>
-                <button onClick={() => addItemToCart(item)}>
-                  Add To Cart <span>{item.discountedPrice}$</span>
-                </button>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </main>
     </>
