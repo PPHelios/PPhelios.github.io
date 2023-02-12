@@ -1,4 +1,3 @@
-
 import {
   Route,
   createBrowserRouter,
@@ -13,14 +12,14 @@ import Shop from "./features/shop/Shop";
 import Layout from "./features/layout/Layout";
 import CartPage from "./features/cartPage/CartPage";
 import { NoPageFound } from "./features/noPageFound/NoPageFound";
-import {ProtectedRoutes} from "./features/authentication/ProtectedRoutes";
+import { ProtectedRoutes } from "./features/authentication/ProtectedRoutes";
 import AdminPanel from "./features/adminPanel/AdminPanel";
 import LoginPage from "./features/authentication/LoginPage";
 import SignupPage from "./features/authentication/SignupPage";
 import User from "./features/authentication/User";
+import AddProduct from "./features/adminPanel/AddProduct";
+import StoreProducts from "./features/adminPanel/StoreProducts";
 function App() {
-
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -32,16 +31,24 @@ function App() {
           <Route path="dass-coffee/location" element={<Location />} />
           <Route path="dass-coffee/cart" element={<CartPage />} />
           <Route
-            path="dass-coffee/AdminPanel"
             element={
-              <ProtectedRoutes>
-                <AdminPanel />
-              </ProtectedRoutes>
+              // <ProtectedRoutes>
+              <AdminPanel />
+              //</ProtectedRoutes>
             }
-          />
-          <Route path="dass-coffee/login" element={<LoginPage/>} />
-          <Route path="dass-coffee/signup" element={<SignupPage/>} />
-          <Route path="dass-coffee/user" element={<User/>} />
+          >
+            <Route
+              path="dass-coffee/adminpanel/products/storeProducts"
+              element={<StoreProducts />}
+            />
+            <Route
+              path="dass-coffee/adminpanel/products/add"
+              element={<AddProduct />}
+            />
+          </Route>
+          <Route path="dass-coffee/login" element={<LoginPage />} />
+          <Route path="dass-coffee/signup" element={<SignupPage />} />
+          <Route path="dass-coffee/user" element={<User />} />
           {/* <ProtectedRoutes path="dass-coffee/auth" component={AdminPanel} /> */}
           <Route path="*" element={<NoPageFound />} />
         </Route>
