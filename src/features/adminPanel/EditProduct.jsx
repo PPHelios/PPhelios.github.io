@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useStore } from "../../store/useStore";
 const initialState = {
   name: "",
@@ -9,28 +10,40 @@ const initialState = {
   img: "",
   alt: "",
 };
-export default function AddProduct() {
+export default function EditProduct() {
+  const { productId } = useParams();
+  const findProduct = useStore((state) => state.findProduct);
   const [formData, setFormData] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const addProduct = useStore((state) => state.addProduct);
-  const buttonText = isSubmitting ? "Adding" : "Add";
+  const editProduct = useStore((state) => state.editProduct);
+  const products = useStore((state) => state.products);
+  const buttonText = isSubmitting ? "editing" : "edit";
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
+  const fetchProductToEdit = async () => {
+    const product = await findProduct(productId);
+    console.log(product);
+    if (product) {
+      setFormData(product);
+    }
+  };
+  useEffect(() => {
+    fetchProductToEdit();
+  }, [products]);
+  const handleEdit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     const genericErrorMessage = "Something went wrong! Please try again later.";
     setError("");
     try {
-      const res = await addProduct(formData);
+      const res = await editProduct(productId, formData);
       setIsSubmitting(false);
-      console.log("Product Added Successfully");
-      setFormData(initialState);
+      console.log("Product edited Successfully");
+      //setFormData(initialState);
     } catch (e) {
-      console.log("error adding: " + e.message);
+      console.log("error editing: " + e.message);
       setIsSubmitting(false);
       const errMessage = e.message ? e.message : genericErrorMessage;
       setError(errMessage);
@@ -39,7 +52,8 @@ export default function AddProduct() {
 
   return (
     <div className="contact--container">
-      <form action="dass-coffee/add" method="POST">
+      <h1>Edit Product {formData && formData.name}</h1>
+      <form action="dass-coffee/edit" method="POST">
         <label htmlFor="name">
           Name
           <input
@@ -129,7 +143,7 @@ export default function AddProduct() {
             required
           />
         </label>
-        <button onClick={handleSubmit} disabled={isSubmitting}>
+        <button onClick={handleEdit} disabled={isSubmitting}>
           {buttonText}
         </button>
       </form>
@@ -144,7 +158,7 @@ export default function AddProduct() {
 //   const genericErrorMessage = "Something went wrong! Please try again later.";
 //   setError("");
 
-//   fetch("http://localhost:8000/products/addProduct", {
+//   fetch("http://localhost:8000/products/editProduct", {
 //     method: "POST",
 //     headers: { "Content-Type": "application/json" },
 //     body: JSON.stringify(formData),
@@ -162,7 +176,7 @@ export default function AddProduct() {
 //         }
 //       } else {
 //         const data = await res.json();
-//         console.log("Product Added Successfully");
+//         console.log("Product edited Successfully");
 //       }
 //     })
 //     .catch((error) => {

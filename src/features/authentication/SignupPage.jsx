@@ -144,7 +144,7 @@ export default function SignupPage() {
         Already a Member? <Link to="/dass-coffee/login">Login</Link>
       </p>
       <button onClick={() => logout()}>logout</button>
-      <Link to="/dass-coffee/adminpanel/storeProducts">user</Link>
+      <Link to="/dass-coffee/adminpanel/products/storeProducts">user</Link>
     </main>
   );
 }

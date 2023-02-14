@@ -1,9 +1,12 @@
+import { useState, useEffect } from "react";
 import {
   Route,
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  useParams,
 } from "react-router-dom";
+import { useStore } from "./store/useStore";
 import About from "./features/about/About";
 import Contact from "./features/contact/Contact";
 import { Home } from "./features/home/Home";
@@ -18,8 +21,21 @@ import LoginPage from "./features/authentication/LoginPage";
 import SignupPage from "./features/authentication/SignupPage";
 import User from "./features/authentication/User";
 import AddProduct from "./features/adminPanel/AddProduct";
+import EditProduct from "./features/adminPanel/EditProduct";
 import StoreProducts from "./features/adminPanel/StoreProducts";
+
 function App() {
+  const getProducts = useStore((state) => state.getProducts);
+  const fetchProducts = async () => {
+    try {
+      const fetchedProducts = await getProducts();
+    } catch (err) {
+      console.log("Error Fetching Products");
+    }
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -44,6 +60,10 @@ function App() {
             <Route
               path="dass-coffee/adminpanel/products/add"
               element={<AddProduct />}
+            />
+            <Route
+              path="dass-coffee/adminpanel/products/:productId/edit"
+              element={<EditProduct />}
             />
           </Route>
           <Route path="dass-coffee/login" element={<LoginPage />} />
