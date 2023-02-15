@@ -49,32 +49,37 @@ export default function AddProduct() {
             placeholder="Enter Your Name"
             value={formData.name}
             onChange={handleFormChange}
+            maxLength={20}
             required
           />
         </label>
 
         <label htmlFor="shortDescription">
           Short Description
-          <input
+          <textarea
             id="shortDescription"
             name="shortDescription"
             type="text"
             placeholder="Enter Short Description"
             value={formData.shortDescription}
             onChange={handleFormChange}
+            rows={5}
+            maxLength={200}
             required
           />
         </label>
 
         <label htmlFor="description">
           Description
-          <input
+          <textarea
             id="description"
             name="description"
             type="text"
             placeholder="Enter Description"
             value={formData.description}
             onChange={handleFormChange}
+            rows={3}
+            maxLength={300}
             required
           />
         </label>
@@ -114,6 +119,7 @@ export default function AddProduct() {
             placeholder="Enter Your Img Name"
             value={formData.img}
             onChange={handleFormChange}
+            maxLength={20}
             required
           />
         </label>
@@ -126,6 +132,7 @@ export default function AddProduct() {
             placeholder="Enter Your alt Name"
             value={formData.alt}
             onChange={handleFormChange}
+            maxLength={50}
             required
           />
         </label>

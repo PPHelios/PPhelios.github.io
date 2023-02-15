@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/useStore";
 const initialState = {
   name: "",
@@ -18,6 +18,7 @@ export default function EditProduct() {
   const [error, setError] = useState("");
   const editProduct = useStore((state) => state.editProduct);
   const products = useStore((state) => state.products);
+  const navigate = useNavigate();
   const buttonText = isSubmitting ? "editing" : "edit";
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,8 +41,9 @@ export default function EditProduct() {
     try {
       const res = await editProduct(productId, formData);
       setIsSubmitting(false);
-      console.log("Product edited Successfully");
-      //setFormData(initialState);
+      console.log("Product edited Successfully ");
+
+      navigate("/dass-coffee/adminpanel/products/storeProducts");
     } catch (e) {
       console.log("error editing: " + e.message);
       setIsSubmitting(false);
@@ -63,32 +65,36 @@ export default function EditProduct() {
             placeholder="Enter Your Name"
             value={formData.name}
             onChange={handleFormChange}
+            maxLength={20}
             required
           />
         </label>
 
         <label htmlFor="shortDescription">
           Short Description
-          <input
+          <textarea
             id="shortDescription"
             name="shortDescription"
             type="text"
             placeholder="Enter Short Description"
             value={formData.shortDescription}
             onChange={handleFormChange}
+            maxLength={200}
             required
           />
         </label>
 
         <label htmlFor="description">
           Description
-          <input
+          <textarea
             id="description"
             name="description"
             type="text"
             placeholder="Enter Description"
             value={formData.description}
             onChange={handleFormChange}
+            rows={3}
+            maxLength={300}
             required
           />
         </label>
@@ -128,6 +134,7 @@ export default function EditProduct() {
             placeholder="Enter Your Img Name"
             value={formData.img}
             onChange={handleFormChange}
+            maxLength={20}
             required
           />
         </label>
@@ -140,6 +147,7 @@ export default function EditProduct() {
             placeholder="Enter Your alt Name"
             value={formData.alt}
             onChange={handleFormChange}
+            maxLength={50}
             required
           />
         </label>

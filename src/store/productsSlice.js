@@ -26,22 +26,28 @@ export const productsSlice = (set, get) => ({
           state.products.push(res);
         })
       );
-      console.log(get().products);
+
       return res;
     } catch (err) {
       throw new Error(err.message);
     }
   },
   editProduct: async (productId, formData) => {
-    console.log(productId, formData);
+    const productsBeforeSubmit = get().products;
+    const newProductsList = get().products.filter(
+      (product) => product._id !== productId
+    );
+    newProductsList.push(formData);
+
     try {
       const data = await apiRequest(
         `http://localhost:8000/products/${productId}/edit`,
-        "PATCH",
+        "PUT",
         { formData }
       );
-      console.log(data);
+      set((state) => ({ products: newProductsList }));
     } catch (err) {
+      set((state) => ({ products: productsBeforeSubmit }));
       throw new Error(err.message);
     }
   },
@@ -51,7 +57,6 @@ export const productsSlice = (set, get) => ({
       (product) => product._id !== id
     );
     set((state) => ({ products: newProductsList }));
-
     try {
       const data = await apiRequest(
         "http://localhost:8000/products/deleteProduct",
@@ -64,8 +69,8 @@ export const productsSlice = (set, get) => ({
       throw new Error(err.message);
     }
   },
-  findProduct: (productId) => {
-    const productToEdit = get().products.find((product) => {
+  findProduct: async (productId) => {
+    const productToEdit = await get().products.find((product) => {
       return product._id === productId;
     });
     return productToEdit;
