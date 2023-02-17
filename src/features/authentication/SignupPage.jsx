@@ -3,10 +3,22 @@ import { Link } from "react-router-dom";
 import { useStore } from "../../store/useStore";
 
 const initialState = {
-  email: "",
-  password: "",
   firstName: "",
   lastName: "",
+  email: "",
+  password: "",
+  phoneNumber:"",
+  gender:"",
+  birthDate:"2019-07-22",
+  dateToString:function(){
+const x = this.birthDate
+console.log(x)
+if (typeof x !== String){
+  console.log(x)
+  console.log(new Date(x))
+}
+  },
+  addresses:[""],
 };
 export default function SignupPage() {
   const [formData, setFormData] = useState(initialState);
@@ -15,27 +27,22 @@ export default function SignupPage() {
   const login = useStore((state) => state.login);
   const logout = useStore((state) => state.logout);
   const buttonText = isSubmitting ? "Registering" : "Register";
+  
   const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const {name} = e.target
+    if (name === "birthDate" ){
+      const date = new Date(e.target.value)
+      setFormData({ ...formData, birthDate: date });
+    } else if(name === "addresses"){
+      setFormData({ ...formData, addresses: [e.target.value] });
+    } else {
+      console.log('else '+ name, e.target.value , e.target.name)
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    } 
   };
 
-  /**
-   * Sync logout across tabs
-   */
-  const syncLogout = useCallback((event) => {
-    if (event.key === "logout") {
-      // If using react-router-dom, you may call history.push("/")
-      window.location.reload();
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("storage", syncLogout);
-    return () => {
-      window.removeEventListener("storage", syncLogout);
-    };
-  }, [syncLogout]);
-
+  console.log(formData)
+  console.log(formData.dateToString())
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -50,7 +57,7 @@ export default function SignupPage() {
       body: JSON.stringify({
         firstName: formData.firstName,
         lastName: formData.lastName,
-        username: formData.email,
+        email: formData.email,
         password: formData.password,
       }),
     })
@@ -78,7 +85,7 @@ export default function SignupPage() {
         setIsSubmitting(false);
         setError(error);
       });
-    setFormData(initialState);
+   // setFormData(initialState);
   };
 
   return (
@@ -87,6 +94,30 @@ export default function SignupPage() {
         <p>Signup</p>
       </div>
       <form action="">
+      <label htmlFor="firstName">
+          First Name
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="Enter Your First Name"
+            value={formData.firstName}
+            onChange={handleFormChange}
+            required
+          />
+        </label>
+        <label htmlFor="lastName">
+          Last Name
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Enter Your Last Name"
+            value={formData.lastName}
+            onChange={handleFormChange}
+            required
+          />
+        </label>
         <label htmlFor="email">
           Email Address
           <input
@@ -111,26 +142,50 @@ export default function SignupPage() {
             required
           />
         </label>
-        <label htmlFor="firstName">
-          First Name
+        <label htmlFor="lastName">
+        Phone Number
           <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            placeholder="Enter Your First Name"
-            value={formData.firstName}
+            id="phoneNumber"
+            name="phoneNumber"
+            type="number"
+            placeholder="Enter Your Phone Number"
+            value={formData.phoneNumber}
             onChange={handleFormChange}
             required
           />
         </label>
-        <label htmlFor="lastName">
-          Last Name
+        <label htmlFor="gender">
+        Gender
           <input
-            id="lastName"
-            name="lastName"
+            id="gender"
+            name="gender"
             type="text"
-            placeholder="Enter Your Last Name"
-            value={formData.lastName}
+            placeholder="Enter Your Gender"
+            value={formData.gender}
+            onChange={handleFormChange}
+            required
+          />
+        </label>
+        <label htmlFor="birthDate">
+        Birth Date
+          <input
+            id="birthDate"
+            name="birthDate"
+            type="date"
+            placeholder="Enter Your Birth Date"
+            value={formData.birthDate}
+            onChange={handleFormChange}
+            required
+          />
+        </label>
+        <label htmlFor="address">
+        Address
+          <input
+            id="address"
+            name="addresses"
+            type="text"
+            placeholder="Enter Your Address"
+            value={formData.addresses[0]}
             onChange={handleFormChange}
             required
           />

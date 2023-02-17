@@ -21,6 +21,7 @@ export const apiRequest = async (url, method, formData) => {
       // handle other request
       const res = await fetch(url, {
         method: method,
+        credentials: 'include',
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
