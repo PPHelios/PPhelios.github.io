@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   Route,
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  useParams,
 } from "react-router-dom";
 import { useStore } from "./store/useStore";
 import About from "./features/about/About";
@@ -15,7 +14,7 @@ import Shop from "./features/shop/Shop";
 import Layout from "./features/layout/Layout";
 import CartPage from "./features/cartPage/CartPage";
 import { NoPageFound } from "./features/noPageFound/NoPageFound";
-import { ProtectedRoutes } from "./features/authentication/ProtectedRoutes";
+//import { ProtectedRoutes } from "./features/authentication/ProtectedRoutes";
 import AdminPanel from "./features/adminPanel/AdminPanel";
 import LoginPage from "./features/authentication/LoginPage";
 import SignupPage from "./features/authentication/SignupPage";
@@ -26,16 +25,20 @@ import StoreProducts from "./features/adminPanel/StoreProducts";
 
 function App() {
   const getProducts = useStore((state) => state.getProducts);
-  const fetchProducts = async () => {
-    try {
-      const fetchedProducts = await getProducts();
-    } catch (err) {
-      console.log("Error Fetching Products");
-    }
-  };
+
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const fetchedProducts = await getProducts();
+        if(fetchedProducts){
+          console.log("Products Fetched Successfully " + fetchedProducts);
+        }
+      } catch (err) {
+        console.log("Error Fetching Products");
+      }
+  };
     fetchProducts();
-  }, []);
+  }, [getProducts]);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

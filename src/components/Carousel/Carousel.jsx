@@ -61,7 +61,7 @@ export const Carousel = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [getProducts]);
 
   return (
     <div className="sliderContainer">

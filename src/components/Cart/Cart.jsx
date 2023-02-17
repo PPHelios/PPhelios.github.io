@@ -4,7 +4,7 @@ import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
 export default function Cart({ onClick }) {
   const cartItems = useStore((state) => state.cart);
-  const loggedin = useStore((state) => state.loggedIn);
+  //const loggedin = useStore((state) => state.loggedIn);
   const totalItems = useStore((state) => state.cartTotalItems());
   const totalItemsPrice = useStore((state) => state.cartTotalItemsPrice());
   const cartBeforeDiscountTotalItemsPrice = useStore((state) =>

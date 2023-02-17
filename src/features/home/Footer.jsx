@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer>
@@ -11,39 +13,39 @@ export default function Footer() {
         <div className="footer--body-top">
           <div className="footer--body-top-about">
             <h4>About</h4>
-            <a href="#">Our Story</a>
-            <a href="#">Refund Policy</a>
-            <a href="#">Location</a>
+            <Link to="/">Our Story</Link>
+            <Link to="/">Refund Policy</Link>
+            <Link to="/">Location</Link>
           </div>
           <div className="footer--body-top-support">
             <h4>Support</h4>
-            <a href="#">FAQs</a>
-            <a href="#">Contact</a>
-            <a href="#">Shipping & Returns</a>
+            <Link to="/">FAQs</Link>
+            <Link to="/">Contact</Link>
+            <Link to="/">Shipping & Returns</Link>
           </div>
           <div className="footer--body-top-socialsBar">
-            <a href="#">
+            <a href="www.facebook.com">
               <img
                 src={require("../../assets/images/facebook-logo.webp")}
                 loading="lazy"
                 alt="facebook icon"
               />
             </a>
-            <a href="#">
+            <a href="www.instagram.com">
               <img
                 src={require("../../assets/images/instagram-logo-pink.webp")}
                 loading="lazy"
                 alt="instagram icon"
               />
             </a>
-            <a href="#">
+            <a href="www.twitter.com">
               <img
                 src={require("../../assets/images/twitter-square-logo.webp")}
                 loading="lazy"
                 alt="twitter icon"
               />
             </a>
-            <a href="#">
+            <a href="www.tiktok.com">
               <img
                 src={require("../../assets/images/tiktok-logo-pink.webp")}
                 loading="lazy"

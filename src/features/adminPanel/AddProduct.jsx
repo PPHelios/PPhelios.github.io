@@ -27,7 +27,7 @@ export default function AddProduct() {
     try {
       const res = await addProduct(formData);
       setIsSubmitting(false);
-      console.log("Product Added Successfully");
+      console.log("Product Added Successfully " + res);
       setFormData(initialState);
     } catch (e) {
       console.log("error adding: " + e.message);

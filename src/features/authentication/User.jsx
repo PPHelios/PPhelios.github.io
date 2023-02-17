@@ -29,7 +29,7 @@ export default function User() {
         }
       }
     });
-  }, [login, token.token]);
+  }, [login, token]);
 
   useEffect(() => {
     // fetch only when user details are not present

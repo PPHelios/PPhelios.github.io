@@ -23,16 +23,18 @@ export default function EditProduct() {
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const fetchProductToEdit = async () => {
+  
+  useEffect(() => {
+const fetchProductToEdit = async () => {
     const product = await findProduct(productId);
     console.log(product);
     if (product) {
       setFormData(product);
     }
   };
-  useEffect(() => {
+
     fetchProductToEdit();
-  }, [products]);
+  }, [products, productId, findProduct]);
   const handleEdit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);

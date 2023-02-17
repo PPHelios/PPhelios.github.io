@@ -8,6 +8,7 @@ export const productsSlice = (set, get) => ({
         "http://localhost:8000/products/getProducts",
         "GET"
       );
+      console.log(fetchedProducts);
       set((state) => ({ products: fetchedProducts }));
     } catch (err) {
       throw new Error(err.message);

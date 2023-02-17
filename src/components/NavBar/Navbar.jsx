@@ -43,7 +43,7 @@ export const Navbar = () => {
       mediaWatcher.removeEventListener("change", updateIsNarrowScreen);
       window.removeEventListener("scroll", handleNavigation);
     };
-  });
+  },[]);
   useEffect(() => {
     if (totalItems > 0) {
       setFill(`#ff5b19`);

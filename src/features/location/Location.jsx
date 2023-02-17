@@ -27,6 +27,7 @@ export default function Location() {
           marginHeight="0"
           marginWidth="0"
           loading="lazy"
+          title="our location map"
           src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=nasr%20city+(nasr%20city%20costa)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         ></iframe>
       </div>

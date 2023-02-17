@@ -4,6 +4,7 @@ export const apiRequest = async (url, method, formData) => {
       // handle get request
       const res = await fetch(url, {
         method: "GET",
+        credentials: 'include',
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

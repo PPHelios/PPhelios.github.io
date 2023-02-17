@@ -8,7 +8,7 @@ export default function Shop() {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [getProducts]);
   return (
     <>
       <main className="shop--container">

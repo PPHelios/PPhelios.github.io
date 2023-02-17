@@ -33,34 +33,34 @@ export default function AboutAndJoin() {
           <p>like and subscribe!!!</p>
         </div>
         <div className="aboutAndJoin--join-socialsBar">
-          <a href="#">
-            <img
-              src={require("../../assets/images/facebook-logo.webp")}
-              loading="lazy"
-              alt="facebook icon"
-            />
-          </a>
-          <a href="#">
-            <img
-              src={require("../../assets/images/instagram-logo-pink.webp")}
-              loading="lazy"
-              alt="instagram icon"
-            />
-          </a>
-          <a href="#">
-            <img
-              src={require("../../assets/images/twitter-square-logo.webp")}
-              loading="lazy"
-              alt="twitter icon"
-            />
-          </a>
-          <a href="#">
-            <img
-              src={require("../../assets/images/tiktok-logo-pink.webp")}
-              loading="lazy"
-              alt="tiktok icon"
-            />
-          </a>
+        <a href="www.facebook.com">
+              <img
+                src={require("../../assets/images/facebook-logo.webp")}
+                loading="lazy"
+                alt="facebook icon"
+              />
+            </a>
+            <a href="www.instagram.com">
+              <img
+                src={require("../../assets/images/instagram-logo-pink.webp")}
+                loading="lazy"
+                alt="instagram icon"
+              />
+            </a>
+            <a href="www.twitter.com">
+              <img
+                src={require("../../assets/images/twitter-square-logo.webp")}
+                loading="lazy"
+                alt="twitter icon"
+              />
+            </a>
+            <a href="www.tiktok.com">
+              <img
+                src={require("../../assets/images/tiktok-logo-pink.webp")}
+                loading="lazy"
+                alt="tiktok icon"
+              />
+            </a>
         </div>
       </div>
     </section>

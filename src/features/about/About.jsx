@@ -54,7 +54,7 @@ export default function About() {
               srcset={`${bokeh380} 380w,
 ${bokeh974} 974w,
 ${bokeh1380} 1380w`}
-              src={`${bokeh1380}`}
+
               alt=""
               loading="lazy"
             />
