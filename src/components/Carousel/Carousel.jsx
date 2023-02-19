@@ -57,11 +57,6 @@ const settings = {
 export const Carousel = () => {
   const addItemToCart = useStore((state) => state.addItemToCart);
   const products = useStore((state) => state.products);
-  const getProducts = useStore((state) => state.getProducts);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
 
   return (
     <div className="sliderContainer">

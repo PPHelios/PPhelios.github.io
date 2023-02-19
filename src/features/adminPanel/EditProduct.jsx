@@ -25,11 +25,13 @@ export default function EditProduct() {
   };
   
   useEffect(() => {
-const fetchProductToEdit = async () => {
-    const product = await findProduct(productId);
-    console.log(product);
+const fetchProductToEdit = () => {
+    const product = findProduct(productId);  
     if (product) {
+      console.log(product);
       setFormData(product);
+    } else {
+      console.log("Couldn't Find Product")
     }
   };
 
@@ -47,7 +49,7 @@ const fetchProductToEdit = async () => {
 
       navigate("/dass-coffee/adminpanel/products/storeProducts");
     } catch (e) {
-      console.log("error editing: " + e.message);
+      console.log("error editing Product: " + e.message);
       setIsSubmitting(false);
       const errMessage = e.message ? e.message : genericErrorMessage;
       setError(errMessage);

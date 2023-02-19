@@ -1,14 +1,100 @@
 import { useEffect } from "react";
 import { useStore } from "../../store/useStore";
 import "./shop.scss";
+const x = [
+    {
+        "_id": "63e5fe9b93959007702d66ed",
+        "name": "Monaliza",
+        "shortDescription": "Verl Light Blend Of Coffee",
+        "description": "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin!",
+        "price": 60,
+        "discountedPrice": 55,
+        "img": "shop5",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66ea",
+        "name": "Pinky",
+        "shortDescription": "Light Blend Of Coffee",
+        "description": "Our signature blend, which is a blend of our Nicaraguan and Peruvian beans. Our Nicaraguan beans are directly from an awesome family-run farm.",
+        "price": 60,
+        "discountedPrice": 55,
+        "img": "shop2",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66e9",
+        "name": "The General",
+        "shortDescription": "Strong Blend Of Coffee",
+        "description": "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin!",
+        "price": 70,
+        "discountedPrice": 65,
+        "img": "shop1",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66ee",
+        "name": "Actionz",
+        "shortDescription": "Double The Caffine!",
+        "description": "Our signature blend, which is a blend of our Nicaraguan and Peruvian beans. Our Nicaraguan beans are directly from an awesome family-run farm.",
+        "price": 60,
+        "discountedPrice": 55,
+        "img": "shop6",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66ef",
+        "name": "Monroe",
+        "shortDescription": "Decafinated Coffee",
+        "description": "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin!",
+        "price": 80,
+        "discountedPrice": 75,
+        "img": "shop7",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66eb",
+        "name": "Rock Star",
+        "shortDescription": "Brazilian Blend Of Coffee",
+        "description": "Our Peruvian beans are from San Ignacio (Estrella Divina), a co-op in a lovely part of Peru. Light/medium roasted, and our customer favorite single origin!",
+        "price": 55,
+        "discountedPrice": 50,
+        "img": "shop3",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e5fe9b93959007702d66ec",
+        "name": "The Lady",
+        "shortDescription": "Bali Blend Of Coffee",
+        "description": "Our signature blend, which is a blend of our Nicaraguan and Peruvian beans. Our Nicaraguan beans are directly from an awesome family-run farm.",
+        "price": 75,
+        "discountedPrice": 70,
+        "img": "shop4",
+        "alt": "shop coffee item",
+        "__v": 0
+    },
+    {
+        "_id": "63e917fd8ac266b9243ac6a8",
+        "name": "test66778",
+        "price": 10,
+        "discountedPrice": 10,
+        "shortDescription": "Ghg",
+        "description": "Fghg",
+        "img": "shop4",
+        "alt": "Hg",
+        "__v": 0
+    }
+]
 export default function Shop() {
   const addItemToCart = useStore((state) => state.addItemToCart);
   const products = useStore((state) => state.products);
-  const getProducts = useStore((state) => state.getProducts);
 
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
   return (
     <>
       <main className="shop--container">

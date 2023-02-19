@@ -1,35 +1,27 @@
-import { useState, useEffect, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/useStore";
-
 const initialState = {
   firstName: "",
   lastName: "",
   email: "",
-  hash: "",
+  password: "",
   phoneNumber:"",
   gender:"",
   birthDate:"2000-01-01",
-//   dateToString:function(){
-// const x = this.birthDate
-// console.log(x)
-// if (typeof x !== String){
-//   console.log(x)
-//   console.log(new Date(x))
-// }
-//   },
   addresses:[""],
 };
-export default function SignupPage() {
+export default function EditUser() {
+  const { userId } = useParams();
+  const findUser = useStore((state) => state.findUser);
   const [formData, setFormData] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const addUser = useStore((state) => state.addUser);
-  const login = useStore((state) => state.login);
-  const logout = useStore((state) => state.logout);
-  const navigate = useNavigate()
-  const buttonText = isSubmitting ? "Registering" : "Register";
-
+  const editUser = useStore((state) => state.editUser);
+  const Users = useStore((state) => state.Users);
+  const navigate = useNavigate();
+  const buttonText = isSubmitting ? "editing" : "edit";
+  
   const handleFormChange = (e) => {
     const {name} = e.target
     if(name === "addresses"){
@@ -39,19 +31,31 @@ export default function SignupPage() {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     } 
   };
-
-  const handleSubmit = async(e) => {
+  
+  useEffect(() => {
+const fetchUserToEdit =  () => {
+    const User = findUser(userId);
+   // console.log(User);
+    if (User) {
+      setFormData(User);
+    } else {
+      console.log("Couldn't Find User")
+    }
+  };
+    fetchUserToEdit();
+  }, [Users, userId, findUser]);
+  const handleEdit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     const genericErrorMessage = "Something went wrong! Please try again later.";
     setError("");
     try {
-      const res = await addUser(formData);
+      const res = await editUser(userId, formData);
       setIsSubmitting(false);
-      console.log("User Added Successfully ");
-      navigate("/dass-coffee/adminpanel/products/storeProducts");
+      console.log("User edited Successfully ");
+      navigate("/dass-coffee/adminpanel/allusers");
     } catch (e) {
-      console.log("Error Adding User: " + e.message);
+      console.log("error editing User: " + e.message);
       setIsSubmitting(false);
       const errMessage = e.message ? e.message : genericErrorMessage;
       setError(errMessage);
@@ -59,10 +63,8 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="contact--container">
-      <div className="reachToUs">
-        <p>Signup</p>
-      </div>
+    <div className="contact--container">
+      <h1>Edit User {formData && formData.name}</h1>
       <form action="">
       <label htmlFor="firstName">
           First Name
@@ -101,10 +103,10 @@ export default function SignupPage() {
           Password
           <input
             id="password"
-            name="hash"
+            name="password"
             type="password"
             placeholder="Enter Your Password"
-            value={formData.hash}
+            value={formData.password}
             onChange={handleFormChange}
           />
         </label>
@@ -153,16 +155,47 @@ export default function SignupPage() {
             onChange={handleFormChange}
           />
         </label>
-        <button onClick={handleSubmit} disabled={isSubmitting}>
+        <button onClick={handleEdit} disabled={isSubmitting}>
           {buttonText}
         </button>
       </form>
       {error && <h3>{error}</h3>}
-      <p>
-        Already a Member? <Link to="/dass-coffee/login">Login</Link>
-      </p>
-      <button onClick={() => logout()}>logout</button>
-      <Link to="/dass-coffee/adminpanel/products/storeProducts">Admin</Link>
-    </main>
+    </div>
   );
 }
+
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   setIsSubmitting(true);
+//   const genericErrorMessage = "Something went wrong! Please try again later.";
+//   setError("");
+
+//   fetch("http://localhost:8000/Users/editUser", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(formData),
+//   })
+//     .then(async (res) => {
+//       setIsSubmitting(false);
+//       console.log(res);
+//       if (!res.ok) {
+//         if (res.status === 400) {
+//           setError("Please fill all the fields correctly!");
+//         } else if (res.status === 401) {
+//           setError("Invalid email and password combination.");
+//         } else {
+//           setError(genericErrorMessage);
+//         }
+//       } else {
+//         const data = await res.json();
+//         console.log("User edited Successfully");
+//       }
+//     })
+//     .catch((error) => {
+//       setIsSubmitting(false);
+//       const stringError = JSON.stringify(error);
+//       setError(error);
+//       console.log("error: " + stringError);
+//     });
+//   // setFormData(initialState);
+// };

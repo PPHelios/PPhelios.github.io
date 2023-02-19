@@ -39,14 +39,15 @@ console.log("Date: "+ dateFormat.getDate()+
 
 
 
-	console.log(today.getDay()) // 0 sunday to 6 saturday
-	console.log(today.getDate()) // Days from 0 to 31
-	console.log(today.getMonth()) // 0 janusary to 11 December
-	console.log(today.getYear()) // from 1900
-	console.log(today.getFullYear())
+	console.log(date.getDay()) // 0 sunday to 6 saturday
+	console.log(date.getDate()) // Days from 0 to 31
+	console.log(date.getMonth()) // 0 janusary to 11 December
+	console.log(date.getYear()) // from 1900
+	console.log(date.getFullYear())
 	// set to change time
-	console.log(today.setDate(14)) //output in ms
-	console.log(today) //changes today and i have to console.log today to see the output
-	console.log(today.setMonth(10))
-	console.log(today)
-	// to changes the format but doesnt change today
+	console.log(date.setDate(14)) //output in ms
+	console.log(date) //changes date and i have to console.log date to see the output
+	console.log(date.setMonth(10))
+	console.log(date)
+
+	console.log( date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() );

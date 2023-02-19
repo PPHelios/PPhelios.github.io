@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../../store/useStore";
 
 const initialState = {
@@ -12,77 +12,39 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const login = useStore((state) => state.login);
   const logout = useStore((state) => state.logout);
-  const token = useStore((state) => state.loggedIn);
+  const user = useStore((state) => state.user);
   const buttonText = isSubmitting ? "Signing In" : "Sign In";
-
+const navigate = useNavigate()
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const genericErrorMessage = "Something went wrong! Please try again later.";
     setIsSubmitting(true);
     setError("");
-
-    fetch("http://localhost:8081/users/login", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: formData.email,
-        password: formData.password,
-      }),
-    })
-      .then(async (response) => {
-        setIsSubmitting(false);
-        if (!response.ok) {
-          if (response.status === 400) {
-            setError("Please fill all the fields correctly!");
-          } else if (response.status === 401) {
-            setError("Invalid email and password combination.");
-          } else {
-            setError(genericErrorMessage);
-          }
-        } else {
-          const data = await response.json();
-          console.log(data);
-          login({ token: data.token });
-        }
-      })
-      .catch((error) => {
-        setIsSubmitting(false);
-        setError(error);
-      });
+try{
+ const userLogin = await login(formData)
+ setIsSubmitting(false);
+ navigate("/dass-coffee/adminpanel/products/storeProducts");
+} catch(err){
+  console.log("Invalid Email Or Password: " + e.message);
+      setIsSubmitting(false);
+      const errMessage = err.message ? err.message : genericErrorMessage;
+      setError(errMessage);
+}
+    
     // setFormData(initialState);
   };
 
-  const verifyUser = useCallback(() => {
-    fetch("http://localhost:8081/users/refreshToken", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-    }).then(async (response) => {
-      if (response.ok) {
-        console.log(response);
-        const data = await response.json();
-        login({ token: data.token });
-      } else {
-        console.log("null");
-        console.log(response);
-        login(null);
-      }
-      // call refreshToken every 5 minutes to renew the authentication token.
-      setTimeout(verifyUser, 5 * 60 * 1000);
-    });
-  }, [login]);
-
+  
   // useEffect(() => {
   //   verifyUser()
   // }, [verifyUser])
   return (
     <>
-      {token.token ? (
+      {user._id ? (
         <h1>u r logged in</h1>
       ) : (
         <main className="contact--container">

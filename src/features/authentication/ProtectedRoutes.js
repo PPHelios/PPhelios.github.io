@@ -1,12 +1,10 @@
 import { Navigate } from "react-router-dom";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
-
+import { useStore } from "../../store/useStore";
 // receives component and any other props represented by ...rest
 
 export const ProtectedRoutes = ({ children }) => {
-  const token = cookies.get("TOKEN");
-  if (!token) {
+const user = useStore(state => state.user)
+  if (!user._id) {
     return <Navigate to="/dass-coffee/login" replace />;
   }
 

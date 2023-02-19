@@ -50,7 +50,7 @@ export default function AddProduct() {
             value={formData.name}
             onChange={handleFormChange}
             maxLength={20}
-            required
+            required={true}
           />
         </label>
 

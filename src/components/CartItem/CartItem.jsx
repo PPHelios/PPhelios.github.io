@@ -15,13 +15,13 @@ export default function CartItem({ item }) {
       <div className="cartItem--item-data">
         <div className="cartItem--item-data-name">{item.name}</div>
         <div className="cartItem--item-data-quantity">
-          <button onClick={() => decreaseCartItem(item.id)}>-</button>
+          <button onClick={() => decreaseCartItem(item._id)}>-</button>
           <div>{item.quantity}</div>
-          <button onClick={() => increaseCartItem(item.id)}>+</button>
+          <button onClick={() => increaseCartItem(item._id)}>+</button>
         </div>
       </div>
       <div className="cartItem--item-price">
-        <button onClick={() => deleteCartItem(item.id)}>
+        <button onClick={() => deleteCartItem(item._id)}>
           <span className="material-symbols-outlined">delete</span>
         </button>
         <div>{item.discountedPrice}$</div>
