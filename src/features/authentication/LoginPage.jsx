@@ -25,26 +25,22 @@ const navigate = useNavigate()
     setIsSubmitting(true);
     setError("");
 try{
- const userLogin = await login(formData)
+ const response = await login(formData)
+
  setIsSubmitting(false);
  navigate("/dass-coffee/adminpanel/products/storeProducts");
 } catch(err){
-  console.log("Invalid Email Or Password: " + e.message);
+  console.log( err.message );
       setIsSubmitting(false);
-      const errMessage = err.message ? err.message : genericErrorMessage;
-      setError(errMessage);
+      setError(err.message);
 }
     
-    // setFormData(initialState);
+
   };
 
-  
-  // useEffect(() => {
-  //   verifyUser()
-  // }, [verifyUser])
   return (
     <>
-      {user._id ? (
+      {user.token ? (
         <h1>u r logged in</h1>
       ) : (
         <main className="contact--container">

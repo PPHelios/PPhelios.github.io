@@ -10,6 +10,7 @@ export default function Cart({ onClick }) {
   const cartBeforeDiscountTotalItemsPrice = useStore((state) =>
     state.cartBeforeDiscountTotalItemsPrice()
   );
+  console.log(cartItems)
   return (
     <div className="cart--container">
       <div className="cart">
@@ -44,7 +45,7 @@ export default function Cart({ onClick }) {
             </h4>
           </div>
         )}
-        {cartItems.length > 0 && (
+        {cartItems && (
           <div className="cart--btns">
             <button onClick={() => onClick(false)}>Continue Shopping</button>
             <Link to="dass-coffee/cart">

@@ -1,4 +1,4 @@
-export const apiRequest = async (url, method, formData) => {
+export const apiRequest = async (url, method, formData, token) => {
   try {
     if (method === "GET") {
       // handle get request
@@ -8,6 +8,7 @@ export const apiRequest = async (url, method, formData) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
       if (!res.ok) {
@@ -25,13 +26,24 @@ export const apiRequest = async (url, method, formData) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
       if (!res.ok) {
-        const err = await res.json();
+        console.log("api error");
+        if (res.status === 400) {
+          throw new Error("Please fill all the fields correctly!");
+        } else if (res.status === 401) {
+          throw new Error("Invalid email and password combination.");
+        } else {
+          const err = await res.json();
+       
         throw new Error(err.message);
+        }
+        
       } else {
+       
         const data = res.json();
         return data;
       }

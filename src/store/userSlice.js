@@ -5,40 +5,63 @@ export const userSlice = (set, get) => ({
     cart:[]
   },
   allUsers: [],
-  loggedIn: {},
   getAllUsers: async () => {
     const fetchedUsers = await apiRequest(
-      "http://localhost:8000/users/allusers",
-      "GET"
+      `http://localhost:8000/users/allusers`,
+      "GET",null,get().user.token
     );
     set((state) => ({ allUsers: fetchedUsers }));
     console.log(fetchedUsers);
   },
+
+verifyUser: async() =>{
+  try{
+          const data = await apiRequest("http://localhost:8000/users/refreshToken", "POST")
+    const user = data.user
+set(
+        produce((state) => {
+          state.user = {...get().user, token: data.token, email:user.email, firstName:user.firstName, _id:user._id, cart:user.cart};
+        })
+      )
+  } catch(err){
+    set(
+      produce((state) => {
+        state.user = {...get().user, token: null};
+      })
+    )
+    throw new Error(err.message);
+
+  }
+  
+},
+  
+
   addUser: async (newUser) => {
     const res = await apiRequest(
-      "http://localhost:8000/users/newuser",
+      "http://localhost:8000/users/signup",
       "POST",
       newUser
     );
+    console.log(res);
     return res;
   },
-  findUser: (userId) => {
-    const userToEdit = get().allUsers.find((user) => {
-      return user._id === userId;
-    });
-    return userToEdit;
-  },
-  editUser: async (userId, formData) => {
+
+
+  editUser: async (formData) => {
+    const userId = get().user._id
     const usersBeforeSubmit = get().allUsers;
-    const newusersList = get().allUsers.filter((user) => user._id !== userId);
-    newusersList.push(formData);
+
+    const newUsersList = get().allUsers.filter((user) => user._id !== userId);
+    newUsersList.push(formData);
+    console.log(newUsersList);
+      set((state) => ({ allUsers: newUsersList }));
     try {
       const data = await apiRequest(
-        `http://localhost:8000/users/${userId}/edit`,
+        `http://localhost:8000/users/edituser`,
         "PUT",
-        { formData }
+        { formData },
+get().user.token
       );
-      set((state) => ({ allUsers: newusersList }));
     } catch (err) {
       set((state) => ({ allUsers: usersBeforeSubmit }));
       throw new Error(err.message);
@@ -61,20 +84,19 @@ export const userSlice = (set, get) => ({
     }
   },
 
-  login: async (data) => {
+  login: async (userData) => {
     try{
       const user = await apiRequest("http://localhost:8000/users/login",
     "POST",
-    data)
+    userData)
 
     if (user){
-      console.log("Logged in" + user.email)
+      console.log("Logged in" + user.firstName)
       set(
       produce((state) => {
-        state.user = user;
+        state.user = {...get().user, token: user.token, email:user.email, firstName:user.firstName, _id:user._id, cart:user.cart};
       })
     )
-
     }
     } catch(err){
       throw new Error(err.message);
@@ -87,7 +109,7 @@ export const userSlice = (set, get) => ({
   logout: async () => {
     console.log("trying Logg Out")
     
-    const res = await apiRequest("http://localhost:8000/users/logout", "POST")
+    const res = await apiRequest("http://localhost:8000/users/logout", "GET",null,get().user.token)
 console.log(res)
       set(
       produce((state) => {
@@ -100,22 +122,31 @@ console.log(res)
       })
     )
     console.log("Logged Out!!!")
-    
-    
-      
+
       window.localStorage.setItem("logout", Date.now());
 
   },
+
+fetchUserDetails: async() => {
+  const userData = await apiRequest("http://localhost:8000/users/userdata", "GET",null,get().user.token) 
+  return userData
+},
+
+
   updateDbCart: async (data) => {
+    if(get().user.token){
     const res = await apiRequest(
       `http://localhost:8000/users/updatecart`,
       "PUT",
       data
     );
     return res;
+    } else {
+      return data.cart
+    }
   },
   addItemToCart: async (product) => {
-
+    console.log(get().user._id);
     const cartItems = get().user.cart;
     const existingCartItem = cartItems.findIndex(
       (item) => item._id === product._id
@@ -134,14 +165,17 @@ console.log(res)
         })
       );
     }
-    try {
+    
+      try {
       const updatedCart = await get().updateDbCart({
         userId: get().user._id,
         cart: get().user.cart,
       });
     } catch (err) {
       set((state) => ({ user: { ...get().user, cart: cartItems } }));
+    
     }
+    
   },
   increaseCartItem: async (itemId) => {
     const cartItems = get().user.cart;

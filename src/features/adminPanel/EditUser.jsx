@@ -5,20 +5,21 @@ const initialState = {
   firstName: "",
   lastName: "",
   email: "",
-  password: "",
+  //password: "",
   phoneNumber:"",
   gender:"",
   birthDate:"2000-01-01",
   addresses:[""],
 };
 export default function EditUser() {
-  const { userId } = useParams();
-  const findUser = useStore((state) => state.findUser);
+  //will be used in admin
+  //const { userId } = useParams();
+  const fetchUserDetails = useStore((state) => state.fetchUserDetails);
   const [formData, setFormData] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const editUser = useStore((state) => state.editUser);
-  const Users = useStore((state) => state.Users);
+ const allUsers = useStore((state) => state.allUsers);
   const navigate = useNavigate();
   const buttonText = isSubmitting ? "editing" : "edit";
   
@@ -33,24 +34,26 @@ export default function EditUser() {
   };
   
   useEffect(() => {
-const fetchUserToEdit =  () => {
-    const User = findUser(userId);
-   // console.log(User);
-    if (User) {
-      setFormData(User);
+const fetchUserToEdit = async () => {
+    const user = await fetchUserDetails();
+    if (user) {
+      setFormData(user);
     } else {
       console.log("Couldn't Find User")
     }
   };
     fetchUserToEdit();
-  }, [Users, userId, findUser]);
+  }, [ fetchUserDetails]);
+
+  console.log(allUsers)
+
   const handleEdit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     const genericErrorMessage = "Something went wrong! Please try again later.";
     setError("");
     try {
-      const res = await editUser(userId, formData);
+      const res = await editUser(formData);
       setIsSubmitting(false);
       console.log("User edited Successfully ");
       navigate("/dass-coffee/adminpanel/allusers");
@@ -99,7 +102,7 @@ const fetchUserToEdit =  () => {
             onChange={handleFormChange}
           />
         </label>
-        <label htmlFor="password">
+        {/* <label htmlFor="password">
           Password
           <input
             id="password"
@@ -109,7 +112,7 @@ const fetchUserToEdit =  () => {
             value={formData.password}
             onChange={handleFormChange}
           />
-        </label>
+        </label> */}
         <label htmlFor="lastName">
         Phone Number
           <input

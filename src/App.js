@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react"
 import {
   Route,
   createBrowserRouter,
@@ -18,7 +18,6 @@ import { ProtectedRoutes } from "./features/authentication/ProtectedRoutes";
 import AdminPanel from "./features/adminPanel/AdminPanel";
 import LoginPage from "./features/authentication/LoginPage";
 import SignupPage from "./features/authentication/SignupPage";
-import User from "./features/authentication/User";
 import AddProduct from "./features/adminPanel/AddProduct";
 import EditProduct from "./features/adminPanel/EditProduct";
 import StoreProducts from "./features/adminPanel/StoreProducts";
@@ -27,18 +26,49 @@ import EditUser from "./features/adminPanel/EditUser";
 
 function App() {
   const getProducts = useStore((state) => state.getProducts);
+  const verifyUser = useStore((state) => state.verifyUser);
+  const user = useStore((state) => state.user);
+
+  const verifyUserToken = useCallback(() => {
+    console.log("verifying user");
+    verifyUser()
+    // call refreshToken every 5 minutes to renew the authentication token.
+    setTimeout(verifyUserToken, 5 * 60 * 1000)
+  }, [])
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const fetchedProducts = await getProducts();
-        if(fetchedProducts){
-          console.log("Products Fetched Successfully " + fetchedProducts);
-        }
-      } catch (err) {
-        console.log("Error Fetching Products");
-      }
-  };
+    verifyUserToken()
+  }, [verifyUserToken])
+
+/**
+   * Sync logout across tabs
+   */
+const syncLogout = useCallback(event => {
+  if (event.key === "logout") {
+    // If using react-router-dom, you may call history.push("/")
+    window.location.reload()
+  }
+}, [])
+
+useEffect(() => {
+  window.addEventListener("storage", syncLogout)
+  return () => {
+    window.removeEventListener("storage", syncLogout)
+  }
+}, [syncLogout])
+
+const fetchProducts = useCallback(async() => {
+  try {
+    const fetchedProducts = await getProducts();
+    if(fetchedProducts){
+      console.log("Products Fetched Successfully " + fetchedProducts);
+    }
+  } catch (err) {
+    console.log("Error Fetching Products");
+  }
+}, [])
+
+  useEffect(() => {
     fetchProducts();
   }, [getProducts]);
   const router = createBrowserRouter(

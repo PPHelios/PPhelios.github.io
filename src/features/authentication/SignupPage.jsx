@@ -6,7 +6,7 @@ const initialState = {
   firstName: "",
   lastName: "",
   email: "",
-  hash: "",
+  password: "",
   phoneNumber:"",
   gender:"",
   birthDate:"2000-01-01",
@@ -49,7 +49,7 @@ export default function SignupPage() {
       const res = await addUser(formData);
       setIsSubmitting(false);
       console.log("User Added Successfully ");
-      navigate("/dass-coffee/adminpanel/products/storeProducts");
+      navigate("/dass-coffee/");
     } catch (e) {
       console.log("Error Adding User: " + e.message);
       setIsSubmitting(false);
@@ -101,10 +101,10 @@ export default function SignupPage() {
           Password
           <input
             id="password"
-            name="hash"
+            name="password"
             type="password"
             placeholder="Enter Your Password"
-            value={formData.hash}
+            value={formData.password}
             onChange={handleFormChange}
           />
         </label>
