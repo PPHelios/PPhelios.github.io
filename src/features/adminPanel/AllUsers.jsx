@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../../store/useStore";
 export default function AllUsers() {
-  const Users = useStore((state) => state.allUsers);
+  const allusers = useStore((state) => state.allUsers);
   const getAllUsers = useStore((state) => state.getAllUsers);
   const deleteUser = useStore((state) => state.deleteUser);
   const [error, setError] = useState("");
@@ -20,19 +20,19 @@ export default function AllUsers() {
   useEffect(()=>{
     getAllUsers()
   },[getAllUsers])
-
+console.log(allusers)
   const UsersList = () => {
-    if (Users) {
-      return Users.map((User) => {
+    if (allusers) {
+      return allusers.map((user) => {
         return (
-          <div key={User._id}>
-            <h4>{User.firstName}</h4>
-            <h4>{User.email}</h4>
-            <h4>{User.birthDate}</h4>
-            <button onClick={() => handledeleteUser({ id: User._id })}>
+          <div key={user._id}>
+            <h4>{user.firstName}</h4>
+            <h4>{user.email}</h4>
+            <h4>{user.birthDate}</h4>
+            <button onClick={() => handledeleteUser({ id: user._id })}>
               delete
             </button>
-            <Link to={`/dass-coffee/Users/${User._id}/profile`}>
+            <Link to={`/dass-coffee/Users/${user._id}/profile`}>
               Edit
             </Link>
           </div>

@@ -24,7 +24,7 @@ export default function Cart({ onClick }) {
         </div>
 
         <div className="cart--cartItems">
-          {cartItems.length > 0 ? (
+          {cartItems ? (
             cartItems.map((item) => <CartItem item={item} key={item._id} />)
           ) : (
             <h4>Your Cart Is Empty...</h4>

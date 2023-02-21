@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   Route,
   createBrowserRouter,
@@ -27,20 +27,44 @@ import EditUser from "./features/adminPanel/EditUser";
 
 function App() {
   const getProducts = useStore((state) => state.getProducts);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const fetchedProducts = await getProducts();
-        if(fetchedProducts){
-          console.log("Products Fetched Successfully " + fetchedProducts);
-        }
-      } catch (err) {
-        console.log("Error Fetching Products");
+  const authenticate = useStore((state) => state.authenticate);
+  
+  const fetchProducts = useCallback(async () => {
+    try {
+      const fetchedProducts = await getProducts();
+      if(fetchedProducts){
+        console.log("Products Fetched Successfully " + fetchedProducts);
       }
-  };
+    } catch (err) {
+      console.log("Error Fetching Products");
+    }
+});
+  
+  useEffect(() => {
+    
     fetchProducts();
   }, [getProducts]);
+
+
+
+  useEffect(()=>{
+    authenticate()
+  },[])
+
+  const syncLogout = useCallback(event => {
+    if (event.key === "logout") {
+      // If using react-router-dom, you may call history.push("/")
+      window.location.reload()
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("storage", syncLogout)
+    return () => {
+      window.removeEventListener("storage", syncLogout)
+    }
+  }, [syncLogout])
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

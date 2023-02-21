@@ -6,13 +6,37 @@ export const userSlice = (set, get) => ({
   },
   allUsers: [],
   loggedIn: {},
+authenticate: async()=>{
+  try{
+    const res =   await fetch("http://localhost:8000/users/authenticate",{
+            method: "POST",
+            credentials: 'include',
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            }})
+            const user = await res.json()
+            console.log(user)
+            if (user){
+              console.log("Logged in" + user.email)
+              set(
+              produce((state) => {
+                state.user = user;
+              })
+            )
+        
+            }
+  }catch(e){
+    console.log(e)
+  } },
+
   getAllUsers: async () => {
     const fetchedUsers = await apiRequest(
       "http://localhost:8000/users/allusers",
       "GET"
     );
     set((state) => ({ allUsers: fetchedUsers }));
-    console.log(fetchedUsers);
+    console.dir(fetchedUsers);
   },
   addUser: async (newUser) => {
     const res = await apiRequest(
@@ -214,8 +238,13 @@ console.log(res)
     }
   },
   cartTotalItems: () => {
-    const cartItems = get().user.cart;
+    if(get().user.cart){
+      const cartItems = get().user.cart;
     return cartItems.reduce((total, next) => total + next.quantity, 0);
+    }else{
+      return 0
+    }
+    
   },
   cartTotalItemsPrice: () => {
     const cartItems = get().user.cart;
