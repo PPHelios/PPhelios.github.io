@@ -51,3 +51,8 @@ console.log("Date: "+ dateFormat.getDate()+
 	console.log(date)
 
 	console.log( date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() );
+
+
+	// to store dates from date picker to avoid The specified value  does not conform to the required format, "yyyy-MM-dd" error
+const savedDate = new Date().toISOString().slice(0, 10)
+const updatedSavedDate = new Date(e.target.value).toISOString().slice(0, 10)

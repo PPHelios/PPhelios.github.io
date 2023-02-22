@@ -6,7 +6,7 @@ const initialState = {
   firstName: "",
   lastName: "",
   email: "",
-  hash: "",
+  password: "",
   phoneNumber:"",
   gender:"",
   birthDate:"2000-01-01",
@@ -25,7 +25,7 @@ export default function SignupPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const addUser = useStore((state) => state.addUser);
-  const login = useStore((state) => state.login);
+  const user = useStore((state) => state.user);
   const logout = useStore((state) => state.logout);
   const navigate = useNavigate()
   const buttonText = isSubmitting ? "Registering" : "Register";
@@ -59,6 +59,10 @@ export default function SignupPage() {
   };
 
   return (
+    <>
+    {false ? (
+      <h1>u r logged in</h1>
+    ) :
     <main className="contact--container">
       <div className="reachToUs">
         <p>Signup</p>
@@ -101,10 +105,10 @@ export default function SignupPage() {
           Password
           <input
             id="password"
-            name="hash"
+            name="password"
             type="password"
             placeholder="Enter Your Password"
-            value={formData.hash}
+            value={formData.password}
             onChange={handleFormChange}
           />
         </label>
@@ -164,5 +168,6 @@ export default function SignupPage() {
       <button onClick={() => logout()}>logout</button>
       <Link to="/dass-coffee/adminpanel/products/storeProducts">Admin</Link>
     </main>
-  );
-}
+    }
+    </>
+)}
