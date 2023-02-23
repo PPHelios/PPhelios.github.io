@@ -17,7 +17,7 @@ authenticate: async()=>{
             }})
             const user = await res.json()
             console.log(user)
-            if (user){
+            if (user.cart){
               console.log("Logged in" + user.email)
               set(
               produce((state) => {
@@ -141,6 +141,7 @@ console.log(res)
   addItemToCart: async (product) => {
 
     const cartItems = get().user.cart;
+    console.log(cartItems);
     const existingCartItem = cartItems.findIndex(
       (item) => item._id === product._id
     );
