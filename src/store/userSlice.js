@@ -2,33 +2,35 @@ import produce from "immer";
 import { apiRequest } from "./apiRequest";
 export const userSlice = (set, get) => ({
   user: {
-    cart:[]
+    cart: [],
   },
   allUsers: [],
   loggedIn: {},
-authenticate: async()=>{
-  try{
-    const res =   await fetch("http://localhost:8000/users/authenticate",{
-            method: "POST",
-            credentials: 'include',
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            }})
-            const user = await res.json()
-            console.log(user)
-            if (user.cart){
-              console.log("Logged in" + user.email)
-              set(
-              produce((state) => {
-                state.user = user;
-              })
-            )
-        
-            }
-  }catch(e){
-    console.log(e)
-  } },
+  authenticate: async () => {
+    try {
+      const res = await fetch("http://localhost:8000/users/authenticate", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const user = await res.json();
+      console.log(user);
+      if (user.cart) {
+        console.log("Logged in" + user.email);
+        set(
+          produce((state) => {
+            state.user = user;
+          })
+        );
+      } else if (user) {
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
 
   getAllUsers: async () => {
     const fetchedUsers = await apiRequest(
@@ -86,49 +88,44 @@ authenticate: async()=>{
   },
 
   login: async (data) => {
-    try{
-      const user = await apiRequest("http://localhost:8000/users/login",
-    "POST",
-    data)
+    try {
+      const user = await apiRequest(
+        "http://localhost:8000/users/login",
+        "POST",
+        data
+      );
 
-    if (user){
-      console.log("Logged in" + user.email)
-      set(
-      produce((state) => {
-        state.user = user;
-      })
-    )
-
-    }
-    } catch(err){
+      if (user) {
+        console.log("Logged in" + user.email);
+        set(
+          produce((state) => {
+            state.user = user;
+          })
+        );
+      }
+    } catch (err) {
       throw new Error(err.message);
     }
-    
-
-     
   },
-   
+
   logout: async () => {
-    console.log("trying Logg Out")
-    
-    const res = await apiRequest("http://localhost:8000/users/logout", "POST")
-console.log(res)
-      set(
+    console.log("trying Logg Out");
+
+    const res = await apiRequest("http://localhost:8000/users/logout", "POST");
+    console.log(res);
+    set(
       produce((state) => {
-        state.user = {cart:[]};
+        state.user = { cart: [] };
       })
-    )
+    );
     set(
       produce((state) => {
         state.allUsers = [];
       })
-    )
-    console.log("Logged Out!!!")
-    
-    
-      
-      window.localStorage.setItem("logout", Date.now());
+    );
+    console.log("Logged Out!!!");
 
+    window.localStorage.setItem("logout", Date.now());
   },
   updateDbCart: async (data) => {
     const res = await apiRequest(
@@ -139,7 +136,6 @@ console.log(res)
     return res;
   },
   addItemToCart: async (product) => {
-
     const cartItems = get().user.cart;
     console.log(cartItems);
     const existingCartItem = cartItems.findIndex(
@@ -239,13 +235,12 @@ console.log(res)
     }
   },
   cartTotalItems: () => {
-    if(get().user.cart){
+    if (get().user.cart) {
       const cartItems = get().user.cart;
-    return cartItems.reduce((total, next) => total + next.quantity, 0);
-    }else{
-      return 0
+      return cartItems.reduce((total, next) => total + next.quantity, 0);
+    } else {
+      return 0;
     }
-    
   },
   cartTotalItemsPrice: () => {
     const cartItems = get().user.cart;
