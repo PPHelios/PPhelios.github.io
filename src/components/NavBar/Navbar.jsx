@@ -8,13 +8,37 @@ import { ReactComponent as Close } from "../../assets/images/close.svg";
 import { ReactComponent as Menu } from "../../assets/images/menu.svg";
 import { ReactComponent as Person } from "../../assets/images/person.svg";
 import { ReactComponent as Search } from "../../assets/images/search.svg";
+
+const ProfileMenu = ({ user, logout }) => {
+  return (
+    <div className="nav-profile">
+      <Person />
+      <div className="nav-profile-menu">
+        {user?.firstName && <b>Welcome {user.firstName}</b>}
+        {user?.firstName ? (
+          <Link to={`dass-coffee/users/${user._id}/profile`}>User Profile</Link>
+        ) : (
+          <Link to="dass-coffee/login">Login</Link>
+        )}
+        {user?.role === "Admin" && (
+          <Link to="dass-coffee/allusers">Admin Panel</Link>
+        )}
+        {user?.firstName && <button onClick={() => logout()}>Logout</button>}
+      </div>
+    </div>
+  );
+};
+
 export const Navbar = () => {
-  const totalItems = useStore((state) => state.cartTotalItems());
   const [menuOpened, setMenuOpened] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
-  const navRef = useRef(null);
   const [fill, setFill] = useState(`#fff`);
+  const totalItems = useStore((state) => state.cartTotalItems());
+  const user = useStore((state) => state.user);
+  const logout = useStore((state) => state.logout);
+  const navRef = useRef(null);
+
   useEffect(() => {
     // set initial value
     const mediaWatcher = window.matchMedia("(max-width: 667px)");
@@ -43,7 +67,7 @@ export const Navbar = () => {
       mediaWatcher.removeEventListener("change", updateIsNarrowScreen);
       window.removeEventListener("scroll", handleNavigation);
     };
-  },[]);
+  }, []);
   useEffect(() => {
     if (totalItems > 0) {
       setFill(`#ff5b19`);
@@ -79,6 +103,7 @@ export const Navbar = () => {
                 About Us
               </Link>
               <svg
+                className="nav-cup"
                 fill="none"
                 height="31"
                 viewBox="0 0 52 31"
@@ -134,28 +159,33 @@ export const Navbar = () => {
             <Link to="dass-coffee/">
               <h3>Dass Coffee</h3>
             </Link>
-            <button
-              className="nav-main-responsive-shoppingBag"
-              onClick={() => handleOpenCart()}
-              aria-label="shopping bag"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                <path
-                  d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm7-23q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q17.35 21 18 21Zm1.5-9h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM30 21q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q29.35 21 30 21Z"
-                  fill={fill}
-                />
-              </svg>
+            <div className="nav-main-responsive-btnGroup">
+              <ProfileMenu user={user} logout={logout} />
 
-              <div>{totalItems > 0 && totalItems}</div>
-            </button>
+              <button
+                className="nav-main-responsive-btnGroup-shoppingBag"
+                onClick={() => handleOpenCart()}
+                aria-label="shopping bag"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                  <path
+                    d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm7-23q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q17.35 21 18 21Zm1.5-9h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM30 21q.65 0 1.075-.425.425-.425.425-1.075V15h-3v4.5q0 .65.425 1.075Q29.35 21 30 21Z"
+                    fill={fill}
+                  />
+                </svg>
+
+                <div>{totalItems > 0 && totalItems}</div>
+              </button>
+            </div>
           </div>
         </div>
+
         <div className="nav-right">
-          <Search />
-          <Link to="dass-coffee/signup">
-            {" "}
-            <Person />
+          <Link to="dass-coffee/shop">
+            <Search />
           </Link>
+
+          <ProfileMenu user={user} logout={logout} />
 
           <button
             className="nav-right-shoppingBag"
@@ -170,6 +200,7 @@ export const Navbar = () => {
             <div>{totalItems > 0 && totalItems}</div>
           </button>
         </div>
+
         {cartOpen && <Cart onClick={setCartOpen} />}
       </nav>
     </>

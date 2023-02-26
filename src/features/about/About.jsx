@@ -51,10 +51,9 @@ export default function About() {
               sizes="30vw,
               (max-width: 835) 40vw,
               (max-width: 665px) 50vw"
-              srcset={`${bokeh380} 380w,
+              srcSet={`${bokeh380} 380w,
 ${bokeh974} 974w,
 ${bokeh1380} 1380w`}
-
               alt=""
               loading="lazy"
             />

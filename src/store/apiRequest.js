@@ -4,7 +4,7 @@ export const apiRequest = async (url, method, formData) => {
       // handle get request
       const res = await fetch(url, {
         method: "GET",
-        credentials: 'include',
+        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -15,13 +15,14 @@ export const apiRequest = async (url, method, formData) => {
         throw new Error(err.message);
       } else {
         const data = await res.json();
+        // console.log(data);
         return data;
       }
     } else {
       // handle other request
       const res = await fetch(url, {
         method: method,
-        credentials: 'include',
+        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

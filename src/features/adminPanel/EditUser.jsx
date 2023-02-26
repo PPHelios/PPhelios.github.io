@@ -6,11 +6,22 @@ const initialState = {
   lastName: "",
   email: "",
   password: "",
-  phoneNumber:"",
-  gender:"",
-  birthDate:"2000-01-01",
-  addresses:[""],
+  phoneNumber: "",
+  gender: "",
+  birthDate: "2000-01-01",
+  addresses: [""],
+  role: "",
 };
+const genderOptions = [
+  { id: 0, value: "" },
+  { id: 1, value: "Male" },
+  { id: 2, value: "Female" },
+];
+const roleOptions = [
+  { id: 0, value: "" },
+  { id: 1, value: "User" },
+  { id: 2, value: "Admin" },
+];
 export default function EditUser() {
   const { userId } = useParams();
   const findUser = useStore((state) => state.findUser);
@@ -21,27 +32,27 @@ export default function EditUser() {
   const Users = useStore((state) => state.Users);
   const navigate = useNavigate();
   const buttonText = isSubmitting ? "editing" : "edit";
-  
+
   const handleFormChange = (e) => {
-    const {name} = e.target
-    if(name === "addresses"){
+    const { name } = e.target;
+    if (name === "addresses") {
       setFormData({ ...formData, addresses: [e.target.value] });
     } else {
-    //  console.log('else '+ name, e.target.value , e.target.name)
+      //  console.log('else '+ name, e.target.value , e.target.name)
       setFormData({ ...formData, [e.target.name]: e.target.value });
-    } 
-  };
-  
-  useEffect(() => {
-const fetchUserToEdit =  () => {
-    const User = findUser(userId);
-   // console.log(User);
-    if (User) {
-      setFormData(User);
-    } else {
-      console.log("Couldn't Find User")
     }
   };
+
+  useEffect(() => {
+    const fetchUserToEdit = () => {
+      const User = findUser(userId);
+      // console.log(User);
+      if (User) {
+        setFormData(User);
+      } else {
+        console.log("Couldn't Find User");
+      }
+    };
     fetchUserToEdit();
   }, [Users, userId, findUser]);
   const handleEdit = async (e) => {
@@ -63,10 +74,10 @@ const fetchUserToEdit =  () => {
   };
 
   return (
-    <div className="contact--container">
+    <div className="userForm--container">
       <h1>Edit User {formData && formData.name}</h1>
       <form action="">
-      <label htmlFor="firstName">
+        <label htmlFor="firstName">
           First Name
           <input
             id="firstName"
@@ -111,7 +122,7 @@ const fetchUserToEdit =  () => {
           />
         </label>
         <label htmlFor="lastName">
-        Phone Number
+          Phone Number
           <input
             id="phoneNumber"
             name="phoneNumber"
@@ -122,7 +133,7 @@ const fetchUserToEdit =  () => {
           />
         </label>
         <label htmlFor="gender">
-        Gender
+          Gender
           <input
             id="gender"
             name="gender"
@@ -132,8 +143,24 @@ const fetchUserToEdit =  () => {
             onChange={handleFormChange}
           />
         </label>
+        <label htmlFor="gender">
+          Gender
+          <select
+            id="gender"
+            name="gender"
+            type="select"
+            value={formData.gender}
+            onChange={handleFormChange}
+          >
+            {genderOptions.map((option) => (
+              <option value={option.value} key={option.id}>
+                {option.value}
+              </option>
+            ))}
+          </select>
+        </label>
         <label htmlFor="birthDate">
-        Birth Date
+          Birth Date
           <input
             id="birthDate"
             name="birthDate"
@@ -145,7 +172,7 @@ const fetchUserToEdit =  () => {
           />
         </label>
         <label htmlFor="address">
-        Address
+          Address
           <input
             id="address"
             name="addresses"
@@ -155,11 +182,27 @@ const fetchUserToEdit =  () => {
             onChange={handleFormChange}
           />
         </label>
+        <label htmlFor="gender">
+          Role
+          <select
+            id="role"
+            name="role"
+            type="select"
+            value={formData.role}
+            onChange={handleFormChange}
+          >
+            {roleOptions.map((option) => (
+              <option value={option.value} key={option.id}>
+                {option.value}
+              </option>
+            ))}
+          </select>
+        </label>
         <button onClick={handleEdit} disabled={isSubmitting}>
           {buttonText}
         </button>
       </form>
-      {error && <h3>{error}</h3>}
+      {error && <h3 className="userForm--container-error">{error}</h3>}
     </div>
   );
 }

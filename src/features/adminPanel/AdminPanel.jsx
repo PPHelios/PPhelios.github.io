@@ -6,12 +6,14 @@ export default function AdminPanel() {
   return (
     <main className="adminPanel--main">
       <h1>Admin Panel</h1>
-{user && <h2>Hi {user.firstName} {user.lastName}</h2>}
-      <Link to="dass-coffee/adminpanel/products/add">Add Product</Link>
-      <Link to="dass-coffee/adminpanel/products/storeProducts">
-        Store Products
-      </Link>
-      <Link to="dass-coffee/adminpanel/allusers">All Users</Link>
+      {user && (
+        <h2>
+          Hi {user.firstName} {user.lastName}
+        </h2>
+      )}
+      <Link to="dass-coffee/products/add">Add Product</Link>
+      <Link to="dass-coffee/products/storeProducts">Store Products</Link>
+      <Link to="dass-coffee/allusers">All Users</Link>
       <Outlet />
     </main>
   );

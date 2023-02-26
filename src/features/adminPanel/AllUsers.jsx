@@ -17,10 +17,10 @@ export default function AllUsers() {
     }
   };
 
-  useEffect(()=>{
-    getAllUsers()
-  },[getAllUsers])
-console.log(allusers)
+  useEffect(() => {
+    getAllUsers();
+  }, [getAllUsers]);
+  // console.log(allusers)
   const UsersList = () => {
     if (allusers) {
       return allusers.map((user) => {
@@ -32,9 +32,7 @@ console.log(allusers)
             <button onClick={() => handledeleteUser({ id: user._id })}>
               delete
             </button>
-            <Link to={`/dass-coffee/Users/${user._id}/profile`}>
-              Edit
-            </Link>
+            <Link to={`/dass-coffee/Users/${user._id}/profile`}>Edit</Link>
           </div>
         );
       });

@@ -27,9 +27,7 @@ export default function StoreProducts() {
             <button onClick={() => handleDeleteProduct({ id: product._id })}>
               delete
             </button>
-            <Link to={`/dass-coffee/adminpanel/products/${product._id}/edit`}>
-              Edit
-            </Link>
+            <Link to={`/dass-coffee/products/${product._id}/edit`}>Edit</Link>
           </div>
         );
       });

@@ -149,7 +149,7 @@ export default function AddProduct() {
           {buttonText}
         </button>
       </form>
-      {/* {error && <h3>{error}</h3>} */}
+      {error && <h3 className="userForm--container-error">{error}</h3>}
     </div>
   );
 }

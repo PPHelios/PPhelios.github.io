@@ -38,8 +38,9 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="contact--container">
-      <form action="dass-coffee/add" method="POST">
+    <div className="userForm--container">
+      <h1>Add A New Product</h1>
+      <form>
         <label htmlFor="name">
           Name
           <input
@@ -140,7 +141,7 @@ export default function AddProduct() {
           {buttonText}
         </button>
       </form>
-      {error && <h3>{error}</h3>}
+      {error && <h3 className="userForm--container-error">{error}</h3>}
     </div>
   );
 }

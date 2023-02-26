@@ -6,9 +6,9 @@ export const userSlice = (set, get) => ({
   },
   allUsers: [],
   loggedIn: {},
-  authenticate: async () => {
+  sync: async () => {
     try {
-      const res = await fetch("http://localhost:8000/users/authenticate", {
+      const res = await fetch("http://localhost:8000/users/sync", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -17,18 +17,18 @@ export const userSlice = (set, get) => ({
         },
       });
       const user = await res.json();
-      console.log(user);
-      if (user.cart) {
-        console.log("Logged in" + user.email);
+      // console.log(user);
+      if (user?.cart) {
+        // console.log("Logged in" + user.cart);
         set(
           produce((state) => {
             state.user = user;
           })
         );
-      } else if (user) {
       }
     } catch (e) {
-      console.log(e);
+      // console.log("********************************");
+      // console.log(e);
     }
   },
 
@@ -38,7 +38,7 @@ export const userSlice = (set, get) => ({
       "GET"
     );
     set((state) => ({ allUsers: fetchedUsers }));
-    console.dir(fetchedUsers);
+    // console.dir(fetchedUsers);
   },
   addUser: async (newUser) => {
     const res = await apiRequest(
@@ -96,7 +96,7 @@ export const userSlice = (set, get) => ({
       );
 
       if (user) {
-        console.log("Logged in" + user.email);
+        // console.log("Logged in" + user.email);
         set(
           produce((state) => {
             state.user = user;
@@ -109,8 +109,6 @@ export const userSlice = (set, get) => ({
   },
 
   logout: async () => {
-    console.log("trying Logg Out");
-
     const res = await apiRequest("http://localhost:8000/users/logout", "POST");
     console.log(res);
     set(
@@ -123,7 +121,7 @@ export const userSlice = (set, get) => ({
         state.allUsers = [];
       })
     );
-    console.log("Logged Out!!!");
+    // console.log("Logged Out!!!");
 
     window.localStorage.setItem("logout", Date.now());
   },
@@ -135,9 +133,10 @@ export const userSlice = (set, get) => ({
     );
     return res;
   },
+
   addItemToCart: async (product) => {
     const cartItems = get().user.cart;
-    console.log(cartItems);
+    // console.log(cartItems);
     const existingCartItem = cartItems.findIndex(
       (item) => item._id === product._id
     );
@@ -195,7 +194,7 @@ export const userSlice = (set, get) => ({
         })
       );
     } else {
-      console.log("delete");
+      // console.log("delete");
       const deleteItem = get().deleteCartItem;
       deleteItem(itemId);
     }
@@ -225,7 +224,7 @@ export const userSlice = (set, get) => ({
         userId: get().user._id,
         cart: filteredCartItems,
       });
-      console.log("Cart Updated");
+      // console.log("Cart Updated");
     } catch (err) {
       set(
         produce((state) => {

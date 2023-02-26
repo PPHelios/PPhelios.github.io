@@ -8,7 +8,7 @@ export const productsSlice = (set, get) => ({
         "http://localhost:8000/products/getProducts",
         "GET"
       );
-      console.log(fetchedProducts);
+      // console.log(fetchedProducts);
       set((state) => ({ products: fetchedProducts }));
     } catch (err) {
       throw new Error(err.message);
@@ -21,7 +21,7 @@ export const productsSlice = (set, get) => ({
         "POST",
         newProduct
       );
-      console.log(res);
+      // console.log(res);
       set(
         produce((state) => {
           state.products.push(res);

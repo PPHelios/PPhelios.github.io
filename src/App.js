@@ -27,43 +27,40 @@ import EditUser from "./features/adminPanel/EditUser";
 
 function App() {
   const getProducts = useStore((state) => state.getProducts);
-  const authenticate = useStore((state) => state.authenticate);
-  
+  const sync = useStore((state) => state.sync);
+
   const fetchProducts = useCallback(async () => {
     try {
       const fetchedProducts = await getProducts();
-      if(fetchedProducts){
+      if (fetchedProducts) {
         console.log("Products Fetched Successfully " + fetchedProducts);
       }
     } catch (err) {
       console.log("Error Fetching Products");
     }
-});
-  
+  });
+
   useEffect(() => {
-    
     fetchProducts();
   }, [getProducts]);
 
+  useEffect(() => {
+    sync();
+  }, []);
 
-
-  useEffect(()=>{
-    authenticate()
-  },[])
-
-  const syncLogout = useCallback(event => {
+  const syncLogout = useCallback((event) => {
     if (event.key === "logout") {
       // If using react-router-dom, you may call history.push("/")
-      window.location.reload()
+      window.location.reload();
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("storage", syncLogout)
+    window.addEventListener("storage", syncLogout);
     return () => {
-      window.removeEventListener("storage", syncLogout)
-    }
-  }, [syncLogout])
+      window.removeEventListener("storage", syncLogout);
+    };
+  }, [syncLogout]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -77,27 +74,27 @@ function App() {
           <Route path="dass-coffee/cart" element={<CartPage />} />
           <Route path="dass-coffee/login" element={<LoginPage />} />
           <Route path="dass-coffee/signup" element={<SignupPage />} />
-          <Route path="dass-coffee/users/:userId/profile" element={<EditUser />} />
+          <Route
+            path="dass-coffee/users/:userId/profile"
+            element={<EditUser />}
+          />
           <Route
             element={
-               <ProtectedRoutes>
-              <AdminPanel />
+              <ProtectedRoutes>
+                <AdminPanel />
               </ProtectedRoutes>
             }
           >
             <Route
-              path="dass-coffee/adminpanel/products/storeProducts"
+              path="dass-coffee/products/storeProducts"
               element={<StoreProducts />}
             />
+            <Route path="dass-coffee/products/add" element={<AddProduct />} />
             <Route
-              path="dass-coffee/adminpanel/products/add"
-              element={<AddProduct />}
-            />
-            <Route
-              path="dass-coffee/adminpanel/products/:productId/edit"
+              path="dass-coffee/products/:productId/edit"
               element={<EditProduct />}
             />
-            <Route path="dass-coffee/adminpanel/allusers" element={<AllUsers />} />
+            <Route path="dass-coffee/allusers" element={<AllUsers />} />
           </Route>
           <Route path="*" element={<NoPageFound />} />
         </Route>

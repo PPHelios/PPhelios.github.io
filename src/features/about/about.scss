@@ -44,7 +44,7 @@
     article {
       width: 70%;
       font-size: 1.7rem;
-      line-height: 1.5;
+      line-height: 2.5;
       span {
         font-family: $font-sec;
       }
@@ -77,7 +77,7 @@
 }
 @media screen and (max-width: 825px) {
   .about--top {
-    height: 30vh;
+    height: 35vh;
     h2 {
       top: 15%;
       left: 20%;

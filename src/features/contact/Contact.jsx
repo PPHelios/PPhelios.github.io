@@ -20,7 +20,7 @@ export default function Contact() {
   return (
     <main className="contact--container">
       <div className="reachToUs">
-        <p>Need to reach out to us? Hit us up and will get back to you! </p>
+        <p>Need to reach out to us? Hit us up and we will get back to you! </p>
         <address>Email: help@coupletcoffee.com</address>
       </div>
       <form action="">

@@ -23,17 +23,17 @@ export default function EditProduct() {
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+  const productName = products.find((product) => product._id === productId);
   useEffect(() => {
-const fetchProductToEdit = () => {
-    const product = findProduct(productId);  
-    if (product) {
-      console.log(product);
-      setFormData(product);
-    } else {
-      console.log("Couldn't Find Product")
-    }
-  };
+    const fetchProductToEdit = async () => {
+      const product = await findProduct(productId);
+      if (product) {
+        console.log(product);
+        setFormData(product);
+      } else {
+        console.log("Couldn't Find Product");
+      }
+    };
 
     fetchProductToEdit();
   }, [products, productId, findProduct]);
@@ -47,7 +47,7 @@ const fetchProductToEdit = () => {
       setIsSubmitting(false);
       console.log("Product edited Successfully ");
 
-      navigate("/dass-coffee/adminpanel/products/storeProducts");
+      navigate("/dass-coffee/products/storeProducts");
     } catch (e) {
       console.log("error editing Product: " + e.message);
       setIsSubmitting(false);
@@ -57,9 +57,9 @@ const fetchProductToEdit = () => {
   };
 
   return (
-    <div className="contact--container">
-      <h1>Edit Product {formData && formData.name}</h1>
-      <form action="dass-coffee/edit" method="POST">
+    <div className="userForm--container">
+      <h1>Edit Product {productName && productName.name}</h1>
+      <form>
         <label htmlFor="name">
           Name
           <input
@@ -159,7 +159,7 @@ const fetchProductToEdit = () => {
           {buttonText}
         </button>
       </form>
-      {error && <h3>{error}</h3>}
+      {error && <h3 className="userForm--container-error">{error}</h3>}
     </div>
   );
 }
